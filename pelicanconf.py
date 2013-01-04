@@ -16,7 +16,3 @@ DEFAULT_CATEGORY = 'News'
 THEME = 'theme'
 FEED_ATOM = None
 FEED_RSS = 'feeds/all.rss.xml'
-SOCIAL = (
-    ('@cugnet', 'http://twitter.com/cugnet'),
-    ('facebook', 'https://www.facebook.com/groups/cugnet/'),
-)
