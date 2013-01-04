@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content_title %}{% endblock %}
+{% block content %}
+<script src="{{ SITEURL }}/theme/js/home_stats.js"></script>
+<div class="index-block">
+    <img src="{{ SITEURL }}/theme/images/minecraft-home.png" />
+    <h2>Minecraft</h2>
+    <hr />
+    <p>BukGet's API is designed to aide system administrators
+        and developers of the popular game Minecraft.
+    </p>
+</div>
+<div class="index-block">
+    <img src="{{ SITEURL }}/theme/images/python-home.png" />
+    <h2>Python</h2>
+    <hr />
+    <p>The API is written entirely in Python, a fast &amp;
+        flexible language with a lot of capability.
+        Furthermore, all of the code that is used to
+        run BukGet is open source (just click the code
+        link to goto our github page)!
+    </p>
+</div>
+<div class="index-block">
+    <img src="{{ SITEURL }}/theme/images/bukkit-home.png" />
+    <h2>Bukkit</h2>
+    <hr />
+    <p>While the API is designed to interact with multiple
+        plugin datastores, our primary use is as an
+        interactive API into BukkitDev, the plugin repository
+        for the Bukkit Minecraft server.
+    </p>
+</div>
+<div id="hometotals"></div>
+<div id="homestats"></div>
+{% endblock content %}
