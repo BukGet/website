@@ -20,3 +20,6 @@ order to provide a feature-rich API for everyone to use.
 * __Steven McGrath__ _Lead Developer_<br />
   Twitter: [@stevemcgrath](http://twitter.com/stevemcgrath)<br />
   Blog: [chigeek.com](http://chigeek.com)
+* __Enrico Ludwig (Morphesus)__ _Bukkit Plugin Developer_<br />
+  Twitter: [@morphesus](http://twitter.com/morphesus)<br />
+  
