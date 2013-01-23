@@ -10,7 +10,8 @@ This document uses the following conventions:
 * All example output is mono-spaced
 * Query variables are placed after a question mark at the end of a URL.  Example: "/3/?size=2"
 * Fields are represented based on how deep into the document they are with dot notation.  This mimics how the queries are called.
-* The hostname used by all calls is: dev.bukget.org
+* The hostname used by all calls is: __api.bukget.org__
+* All API calls also support the callback query variable.  If set it will return the data padded with the function name specified in the callback.
 
 
 ## API3 Reference
@@ -108,6 +109,13 @@ __Example Output:__
 __Description:__
 
 The plug-in details listing all of the information we know about a given plug-in.  Optionally a specific plug-in version can be specified, only displaying that version in the versions list.
+
+The plug-in version can also be overloaded with the following other names:
+
+* _latest:_ Returns only the most current version.
+* _release:_ Returns only the latest version tagged as a Stable release.
+* _beta:_ Returns only the latest version tagged as a Beta release.
+* _alpha:_ Returns only the latest version tagged as a Alpha release.
 
 __URLs:__
 
@@ -377,39 +385,30 @@ POST ONLY ACTIONS:
 __How to use the POST Request:__
 
 * Content-Type: application/x-www-form-urlencoded
-* Form field name: search
-* Form field format: URL Encoded JSON
+
+__POST Fields:__
+
+* _fields:_ Lists the fields that are to be returned.  This can be either inclusive or exclusive, however not both.  For an inclusive example, you could specify "fields=slug,description" to only return those fields, or you can specify "fields=-versions" to return everything except for the versions information.  Keep in mind the more you ask for, the more data that will come back and it may take longer to process.
+* _start:_ how many documents in do you want to do before starting to display content.  This variable is used with size specifically for pagination.  The default is 0
+* _size:_ How many documents do you want to return.  This variable is used with start specifically for pagination.  The default behavior is to return all documents.
+* _sort:_ How do you want your data sorted?  Simply specify a field here to sort by that field.  Optionally using a "-" before the field name (denoting a negative value) the API will perform an inverse sort.
+* _filters:_ __JSON ENCODED__ Refer to the example format for the filters field below:
 
 __Example Format (unpacked):__
 
 	:::json
-	{
-	    "start": 0,
-	    "size": 10,
-	    "sort": "slug",
-	    "fields": [
-	        "slug",
-	        "plugin_name",
-	        "description"
-	    ],
-	    "filters": [
-	        {
-	            "field": "plugin_name",
-	            "action": "like",
-	            "value": "mc"
-	        },
-	        {
-	            "field": "versions.game_version",
-	            "action": "like",
-	            "value": "1.4.5"
-	        }
-	    ]
-	}
-
-__Example format (urlencoded and packed for submission):__
-
-	search=%7B%22sort%22%3A+%22slug%22%2C+%22start%22%3A+0%2C+%22fields%22%3A+%5B%22slug%22%2C+%22plugin_name%22%2C+%22description%22%5D%2C+%22filters%22%3A+%5B%7B%22action%22%3A+%22like%22%2C+%22field%22%3A+%22plugin_name%22%2C+%22value%22%3A+%22mc%22%7D%2C+%7B%22action%22%3A+%22like%22%2C+%22field%22%3A+%22versions.game_version%22%2C+%22value%22%3A+%221.4.5%22%7D%5D%2C+%22size%22%3A+10%7D
-
+	[
+	    {
+	        "field": "plugin_name",
+	        "action": "like",
+	        "value": "mc"
+	    },
+	    {
+	        "field": "versions.game_version",
+	        "action": "like",
+	        "value": "1.4.5"
+	    }
+	]
 
 __Query Variables:__
 
