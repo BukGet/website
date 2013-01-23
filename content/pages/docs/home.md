@@ -18,8 +18,6 @@ BukGet is an API into the [BukkitDev][] data, more specifically the Server-Mods 
 
 As backwards compatibility is currently supported from the first API version forward, there are 3 major APIs into the database.  The recommended API is called "api3" or "current".  API3 is also going to be the quickest to respond, as there is no need for data translation into the older API formats.  APIs 1 & 2, while still maintained for compatibility reasons, are slower due to the data translation needed, do not support all of the fields API3 supports, and does not support multi-field searching via HTTP POSTs.
 
-All API calls are referencing __api.bukget.org__ (currently __dev.bukget.org__ until the dev code goes live Jan 15th).
-
 * [API3 Documentation][api3]
 * [API2 Documentation][api2]
 * [API1 Documentation][api1]

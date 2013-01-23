@@ -10,7 +10,7 @@ This document uses the following conventions:
 * All example output is mono-spaced
 * Query variables are placed after a question mark at the end of a URL.  Example: "/2/?size=2"
 * Fields are represented based on how deep into the document they are with dot notation.  This mimics how the queries are called.
-* The hostname used by all calls is: dev.bukget.org
+* The hostname used by all calls is: __api.bukget.org__
 
 
 ## API2 Reference
