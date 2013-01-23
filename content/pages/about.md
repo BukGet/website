@@ -21,5 +21,5 @@ order to provide a feature-rich API for everyone to use.
   Twitter: [@stevemcgrath](http://twitter.com/stevemcgrath)<br />
   Blog: [chigeek.com](http://chigeek.com)
 * __Enrico Ludwig (Morphesus)__ _Bukkit Plugin Developer_<br />
-  Twitter: [@morphesus](http://twitter.com/morphesus)<br />
+  Twitter: [@morphsdevstudio](http://twitter.com/morphsdevstudio)<br />
   
