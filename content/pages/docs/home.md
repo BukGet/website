@@ -7,12 +7,12 @@ NOTE: API3 is currently still in active development and is not stable yet.
 
 BukGet is an API into the [BukkitDev][] data, more specifically the Server-Mods section of the site.  The system parses the data every 3 hours and looks for new changes in the data to update.  All of this is automatic and happens without any developer intervention.  Furthermore if you notice any issues, we encourage you to click the [issues][] menu item above and open a ticket with us.  This is the only way we can know about parser errors or issues and make any needed corrections.  Below is the schedule that BukGet uses for generating the data.  Keep in mind that if you update a plugin, it can take just over 3 hours for your plugin to hit the index.
 
-|Type		    		|Times (GMT)													|
-|----------------------:|:--------------------------------------------------------------|
-|__Normal/Speedy:__		| Every 3 hours (0000, 0300, 0600, 0900, 1200, 1500, 1800, 2100)|
-|__Status Update:__  	| Weekly (0000 Saturday)										|
-|__Full Generation:__	| As Needed 													|
-|__Ad-Hoc Updates:__	| As Needed/Ticket Request										|
+|Type		    		|Times (GMT)                            |
+|----------------------:|:--------------------------------------|
+|__Normal/Speedy:__		| Every 6 hours (0000, 0600, 1200, 1800)|
+|__Status Update:__  	| Weekly (0000 Saturday)                |
+|__Full Generation:__	| As Needed                             |
+|__Ad-Hoc Updates:__	| As Needed/Ticket Request              |
 
 ## API Documentation
 
