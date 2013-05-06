@@ -393,6 +393,30 @@ form.searchform input.button {
 .hide   { display: none; }	
 .orange { color: #FFA600; }
 
+/* Status Checker Styles */
+table .status-unknown {
+	background-color: gray;
+}
+
+table .status-ok {
+	background-color: green;
+	color: #FFF;
+}
+
+table .status-error {
+	background-color: red;
+	color: #FFF;
+}
+
+#svccheck div {
+	border-width: 1px;
+	border-style: solid;
+	width: 250px;
+	float: left;
+	padding: 5px;
+	margin: 5px;
+}
+
 
 
 
