@@ -162,6 +162,10 @@ __Field Descriptions:__
 * _versions.commands.permission_message:_ The message displayed if a user tried to run the command without permissions to.
 * _versions.permissions.role:_ Role name.
 * _versions.permissions.default:_ Default permission for this role.  Example, in Bukkit, there are 4 possibilities ("op", "not op", true, false).
+* _popularity.daily:_ The most current popularity score of the plugin.
+* _popularity.weekly:_ The average of the last 7 popularity scores.
+* _popularity.monthly:_ The average of the last 30 popularity scores.
+* _main:_ This is the main field in the plugin.yml.  Bukkit uses this to identify the plugin internally.
 
 __Example Output:__
 
@@ -211,7 +215,13 @@ __Example Output:__
 
 	    ],
 	    "plugin_name": "Abacus",
+	    "popularity": {
+			"monthly": 133,
+			"daily": 994,
+			"weekly": 238
+		},
 	    "server": "bukkit",
+	    "main": "org.ruhlendavis.mc.abacus.Abacus",
 	    "authors": [
 	        "Feaelin {iain@ruhlendavis.org}"
 	    ],
