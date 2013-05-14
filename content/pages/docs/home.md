@@ -3,8 +3,6 @@ title: Docs
 
 ## General Information
 
-NOTE: API3 is currently still in active development and is not stable yet.
-
 BukGet is an API into the [BukkitDev][] data, more specifically the Server-Mods section of the site.  The system parses the data every 3 hours and looks for new changes in the data to update.  All of this is automatic and happens without any developer intervention.  Furthermore if you notice any issues, we encourage you to click the [issues][] menu item above and open a ticket with us.  This is the only way we can know about parser errors or issues and make any needed corrections.  Below is the schedule that BukGet uses for generating the data.  Keep in mind that if you update a plugin, it can take just over 3 hours for your plugin to hit the index.
 
 |Type		    		|Times (GMT)                            |
@@ -18,6 +16,8 @@ BukGet is an API into the [BukkitDev][] data, more specifically the Server-Mods 
 
 As backwards compatibility is currently supported from the first API version forward, there are 3 major APIs into the database.  The recommended API is called "api3" or "current".  API3 is also going to be the quickest to respond, as there is no need for data translation into the older API formats.  APIs 1 & 2, while still maintained for compatibility reasons, are slower due to the data translation needed, do not support all of the fields API3 supports, and does not support multi-field searching via HTTP POSTs.
 
+Further we recommend that when communicating to the API, that you use a custom User-Agent string (UA String) to identify your application.  We are tracking these UA strings and are using these to determine what applications are utilizing the API.  If you have any questions about User Agent strings, please contact us in the IRC channel.
+
 * [API3 Documentation][api3]
 * [API2 Documentation][api2]
 * [API1 Documentation][api1]
@@ -30,7 +30,7 @@ The following items may be exposed via the API, however are used internally by t
 
 ## Recommended Usage Guidelines
 
-Nothing here just yet.
+
 
 
 
