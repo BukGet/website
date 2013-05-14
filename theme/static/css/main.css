@@ -226,6 +226,17 @@ form.searchform input.button {
 	width: 300px;
 }
 
+#news {
+	float: left;
+	padding: 10px 0 0 10px;
+	width: 300px;
+}
+
+#hosting img {
+	float: left;
+	width: 160px;
+}
+
 .centerme {
 	text-align: center;
 }
