@@ -428,6 +428,9 @@ table .status-error {
 	margin: 5px;
 }
 
-
-
-
+#svccheck > div > table > tbody > tr > td {
+    transition: background 1s;
+    -webkit-transition: background 1s;
+    -moz-transition: background 1s;
+    -o-transition: background 1s;
+}
