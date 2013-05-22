@@ -56,7 +56,7 @@ function check_service(){
         });
     };
 
-    var servers = ["dallas.api.bukget.org", "paris.api.bukget.org"];
+    var servers = ["dallas.api.bukget.org", "paris.api.bukget.org", "dev.api.bukget.org"];
 
     var apiCalls = {
         "v3": {
