@@ -136,7 +136,7 @@ __Field Descriptions:__
 * _authors:_ List of authors that wrote this plug-in.
 * _logo:_ A Thumb-nailed version of the logo from the plug-in's BukkitDev page (Bukkit Only).
 * _logo_full:_ The full-size logo from the plug-in's BukkitDev page (Bukkit Only).
-* _webpage:_ The web-page of the plug-in.
+* _website:_ The web-site of the plug-in.
 * _dbo_page:_ The BukkitDev URL for this plug-in (Bukkit Only).
 * _description:_ A short description of the plug-in.
 * _versions:_ A list of version dictionaries.
