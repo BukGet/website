@@ -434,3 +434,20 @@ table .status-error {
     -moz-transition: background 1s;
     -o-transition: background 1s;
 }
+
+#apitrend {
+	width: 100%;
+	height: 300px;
+	float: left;
+}
+
+#uatrend {
+	width: 100%;
+	height: 300px;
+	float: left;
+}
+
+#explorerLayout {
+	width: 100%;
+	height: 100%;
+}

@@ -18,17 +18,6 @@ function top10plugs() {
 };
 
 
-function naughty_list() {
-	$.getJSON('http://api.bukget.org/stats/naughty_list', function(data){
-		$("#naughty").append("<ul>")
-		$.each(data, function(key, item) {
-			$("#naughty").append('<li><em><strong>' + item.slug + '</strong></em>&nbsp;&nbsp;&nbsp;' + item.authors.join(', ') + '</li>');
-		});
-		$("#naughty").append("</ul>")
-	});
-};
-
-
 function naughty_list(){
     $('#naughty').append('<table><tr><th colspan="5"><strong><center>Plugins With Bad Versioning</center></strong></th></tr>' +
                          '<tr bgcolor="#DEDEDE"><th style="width: 350px">Plugin Name</th><th style="width: 100px">Authors</th><th>Vers</th><th>Last Updated</th></tr>');
@@ -45,18 +34,64 @@ function naughty_list(){
 };
 
 
+function api_trending(){
+    $.getJSON('http://api.bukget.org/stats/trend/30', function(data){
+        dset = [{label: 'api1', data: []},
+                {label: 'api2', data: []},
+                {label: 'api3', data: []},
+                {label: 'total', data: []}];
+        uadata = []
+        $.each(data, function(key, item){
+            for (var i = 0; i < dset.length; i++){
+                dset[i]["data"].push([item["timestamp"] * 1000, item[dset[i]["label"]]]);
+            };
+            var comp = [];
+            if ("user_agents" in item){
+                $.each(item["user_agents"], function(ua, value){
+                    var in_ua = false;
+                    var idex = 0;
+                    for (var i = 0; i < uadata.length; i++){
+                        if (uadata[i]["label"] == ua) {
+                            in_ua = true;
+                            idex = i;
+                        };
+                    };
+                    if (!in_ua & value > 10){
+                        in_ua = true
+                        uadata.push({label: ua, data: []}); 
+                        idex = uadata.length - 1;
+                    };
+                    if (in_ua){
+                        comp.push(ua);
+                        uadata[idex]["data"].push([item["timestamp"] * 1000, value]);
+                    };
+                });
+            };
+            for (var i = 0; i < uadata.length; i++){
+                if (comp.indexOf(uadata[i]["label"]) < 0){
+                    uadata[i]["data"].push(null);
+                };
+            };
+        });
+        console.log(uadata)
+        $.plot("#apitrend", dset, {xaxis: {mode: 'time'}});
+        $.plot("#uatrend", uadata, {xaxis: {mode: 'time'}});
+    });
+};
+
+
 function check_service(){
     function checkCall(server, uri, adjust) {
         var url = "http://" + server + uri;
         $.ajax({
             url: url,
-            timeout: 10000,
-            success: function(data){console.log(url + ": OK");$(adjust).attr("class", "status-ok");},
-            error: function(xml, status, error){console.log(url + ": FAIL");$(adjust).attr("class", "status-error");}
+            timeout: 20000,
+            success: function(data){$(adjust).attr("class", "status-ok");},
+            error: function(xml, status, error){$(adjust).attr("class", "status-error");}
         });
     };
 
-    var servers = ["dallas.api.bukget.org", "paris.api.bukget.org", "dev.api.bukget.org"];
+    var servers = ["dallas.api.bukget.org", "paris.api.bukget.org"];
 
     var apiCalls = {
         "v3": {

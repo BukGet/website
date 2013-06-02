@@ -11,10 +11,13 @@ The invalid version list is a list of plugins that have had to be switched over 
 ### API Status
 
 <div id="svccheck"></div>
+<div id="apitrend"></div>
+<div id="uatrend"></div>
 
 <script type="text/javascript">
     $(document).ready(function(){
         naughty_list();
         check_service();
+        api_trending();
     });
 </script>
