@@ -232,6 +232,40 @@ __Example Output:__
 	    ],
 	    "stage": "Beta"
 	}
+### Plug-in Version Checking
+
+__Description:__
+
+This URL is a convenience function to check the latest versions of multiple plug-ins. The call should be comma delimited.
+
+__URLs:__
+
+* /3/plugins/versioncheck/{server}/{slugs}
+
+__Example Inputs:__
+
+* /3/plugins/versioncheck/bukkit/slug1,slug2,slug3
+
+__Example Output:__
+
+	:::json
+	{
+	    [
+	    	"slug": "slug1",
+	        "plugin_name": "Plug-In 1",
+	        "version": "1.0"
+	    ],
+	    [
+	    	"slug": "slug2",
+	        "plugin_name": "Plug-In 2",
+	        "version": "1.0"
+	    ],
+	    [
+	    	"slug": "slug3",
+	        "plugin_name": "Plug-In 3",
+	        "version": "1.0"
+	    ]
+	}
 
 
 ### Plug-in Download
