@@ -164,6 +164,38 @@ __Example Output:__
 	    "stage": "Release"
 	}
 
+### Plug-in Version Checking
+
+__Description:__
+
+This URL is a convenience function to check the latest versions of multiple plug-ins. The call should be comma delimited.
+
+__URLs:__
+
+* /1/plugins/versioncheck/{slugs}
+
+__Example Inputs:__
+
+* /1/plugins/versioncheck/slug1,slug2,slug3
+
+__Example Output:__
+
+	:::json
+	{
+	    [
+	        "name": "slug1",
+	        "version": "1.0"
+	    ],
+	    [
+	        "name": "slug2",
+	        "version": "1.1"
+	    ],
+	    [
+	        "name": "slug3",
+	        "version": "1.0.1"
+	    ]
+	}
+
 
 ### Plug-in Download
 
