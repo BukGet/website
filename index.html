@@ -130,11 +130,51 @@
     var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity';
 
     $.getJSON(latest, function (data) {
-      var $template = $('[data-template="latest"]');
+      var $div = $('.list.upcoming .entries');
+
       data = data[0];
+      $div.empty();
 
-      for (var entry in data.changes) {
+      for (var index in data.changes) {
+        var $template = $('[data-template="latest"] a').clone();
+        var entry = data.changes[index];
 
+        $template.find('h4').text(entry.plugin);
+        $template.find('.label').text(entry.version);
+
+        $div.append($template);
+      }
+    });
+
+    $.getJSON(popular, function (data) {
+      var $div = $('.list.popular .entries');
+
+      $div.empty();
+
+      for (var index in data) {
+        var $template = $('[data-template="latest"] a').clone();
+        var entry = data[index];
+
+        $template.find('h4').text(entry.plugin_name);
+        $template.find('.label').text(entry.popularity.monthly);
+
+        $div.append($template);
+      }
+    });
+
+    $.getJSON(trending, function (data) {
+      var $div = $('.list.trending .entries');
+
+      $div.empty();
+
+      for (var index in data) {
+        var $template = $('[data-template="latest"] a').clone();
+        var entry = data[index];
+
+        $template.find('h4').text(entry.plugin_name);
+        $template.find('.label').text(entry.popularity.monthly);
+
+        $div.append($template);
       }
     });
   </script>
