@@ -1,0 +1,302 @@
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(http://fonts.googleapis.com/css?family=Exo:300,400,500,600,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Signika:400,300,600,700);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica';
+  background: white;
+}
+
+* {
+  box-sizing: box-model;
+  -webkit-font-smoothing: antialiased;
+  -font-rendering: optimizeLegability;
+}
+
+a {
+  text-decoration: none;
+  color: #888;
+}
+
+a:hover {
+  color: #ff6600;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  color: black;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+header .header-inner {
+  padding: 10px 0;
+}
+
+header .header-inner,
+.page .page-inner {
+  width: 960px;
+  margin: 0px auto;
+}
+
+header nav {
+  position: relative;
+}
+
+header nav .logo {
+  font-weight: 16px;
+  line-height: 50px;
+  color: black;
+}
+
+header nav .logo .entypo-bucket {
+  font-size: 28px;
+}
+
+header nav .logo h1 {
+  display: inline-block;
+  font-size: 42px;
+  font-family: 'Signika';
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+
+header nav .logo h1 strong {
+  font-weight: 400;
+  color: #ff6600;
+}
+
+header nav .links {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 50px;
+}
+
+header nav .links a {
+  margin-left: 20px;
+  color: #777;
+  font-size: 12px;
+  font-family: 'Lato';
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+}
+
+header nav .links a .radial {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #6cc425;
+}
+
+header nav .links a.donate {
+  color: #ff6600;
+  border: 2px solid #ff6600;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+header nav .links a:hover,
+header nav .links a.active {
+  color: #ff6600;
+}
+
+.clear {
+  clear: both;
+}
+
+.entries > .indicator {
+  text-align: center;
+}
+
+.section {
+  padding: 20px 0;
+}
+
+.page-inner > h1 {
+  font-weight: 300;
+  color: #444;
+}
+
+.page-inner > h1 .right {
+  float: right;
+  font-size: 14px;
+}
+
+.page-inner > h1 .right a {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 50px;
+}
+
+.leaderboard .list {
+  padding: 30px 0;
+  width: 33%;
+  float: left;
+}
+
+.leaderboard .list > h2 {
+  font-weight: 600;
+  padding-bottom: 0px;
+}
+
+.leaderboard .list > p {
+  color: #666;
+  padding: 5px 0;
+  margin: 0 0 10px;
+}
+
+.leaderboard .list a {
+  display: block;
+  margin-bottom: 5px;
+  color: #ff6600;
+  font-size: 14px;
+}
+
+.leaderboard .list a:hover {
+  color: black;
+}
+
+.leaderboard .list a h4 {
+  display: inline-block;
+}
+
+.leaderboard .list a .installs,
+.leaderboard .list a .label {
+  font-weight: 600;
+  color: #666;
+  background: white;
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+
+
+.leaderboard .list a .slug {
+  font-size: 12px;
+  color: #888;
+  display: none;
+}
+
+.stats {
+  background: #eee;
+}
+
+.stat {
+  float: left;
+  display: inner-block;
+  width: 33%;
+  
+  padding: 20px 0;
+}
+
+.stat h1 {
+  color: #aaa;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Open Sans';
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+
+.stat h1 strong {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.stat h4 {
+  font-size: 72px;
+  font-weight: 400;
+}
+
+.status .overall p {
+  display: inline-block;
+}
+
+.status .overall {
+  margin: 20px 0;
+  border-radius: 3px;
+  font-size: 28px;
+  text-align: center;
+  background: hsl(93, 68%, 46%);
+  color: white;
+}
+
+.status .system {
+  width: 33%;
+  display: inline-block;
+  float: left;
+  padding: 20px 0 60px;
+  text-align: center;
+}
+
+.status .system .block {
+  display: inline-block;
+  border-radius: 2px;
+  width: 10px;
+  height: 10px;
+  margin-right: 2px;
+}
+
+.status .system > h2 {
+  font-weight: 600;
+}
+
+.status .chart {
+  border: 2px solid #eee;
+  border-radius: 2px;
+
+  padding: 20px;
+  text-align: center;
+
+  color: #888;
+}
+
+.status .block.ok,
+header nav .links a .radial.ok,
+.status .overall.ok {
+  background: hsl(93, 68%, 46%);
+}
+
+.status .block.warning,
+header nav .links a .radial.warning,
+.status .overall.warning {
+  background: #ff9900;
+}
+
+.status .block.down,
+header nav .links a .radial.down,
+.status .overall.down {
+  background: #cc0000;
+}
+
+.help-bubble {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #aaa;
+  color: white;
+  line-height: 24px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.template {
+  display: none;
+}
