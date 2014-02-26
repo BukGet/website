@@ -43,13 +43,13 @@ title: Home
     <h1>Stats</h1>
     
     <div class="stat">
-      <h4>14,014</h4>
+      <h4 id="plugins">0</h4>
       <h1>Plugins <strong>Released</strong></h1>
       <div class="meta"></div>
     </div>
 
     <div class="stat">
-      <h4>67,818</h4>
+      <h4 id="versions">0</h4>
       <h1>Versions <strong>Released</strong></h1>
       <div class="meta"></div>
     </div>
@@ -85,6 +85,12 @@ title: Home
 var latest = 'http://api.bukget.org/3?callback=?';
 var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.monthly&fields=plugin_name,slug,popularity&callback=?';
 var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity&callback=?';
+var stats = 'http://api.bukget.org/stats/todays_trends?callback=?';
+
+$.getJSON(stats, function (data) {
+  $('#plugins').text(data.plugin_count);
+  $('#versions').text(data.version_count);
+});
 
 $.getJSON(latest, function (data) {
   var $div = $('.list.upcoming .entries');
