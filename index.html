@@ -60,7 +60,7 @@ page: home
     
     <div class="browser">
       <div class="bar">
-        <input class="address" value="http://api.bukget.org/3/plugins?size=10" readonly />
+        <input class="address" value="loading..." readonly />
         <a class="button button-grey">Try It</a>
       </div>
 
@@ -196,6 +196,8 @@ $.getJSON(trending, function (data) {
     $div.append($template);
   }
 });
+
+$('.browser .bar .address').val(try_it_out);
 
 $(document).on('click', '.browser .bar .button', function (e) {
   var $page = $('.browser .browser-page .browser-page-inner');
