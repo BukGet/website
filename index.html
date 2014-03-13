@@ -60,7 +60,7 @@ page: home
     
     <div class="browser">
       <div class="bar">
-        <input class="address" value="http://api.bukget.org/3" readonly />
+        <input class="address" value="http://api.bukget.org/3/plugins?size=10" readonly />
         <a class="button button-grey">Try It</a>
       </div>
 
@@ -137,6 +137,7 @@ var latest = 'http://api.bukget.org/3?callback=?';
 var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.monthly&fields=plugin_name,slug,popularity&callback=?';
 var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity&callback=?';
 var stats = 'http://api.bukget.org/stats/todays_trends?callback=?';
+var try_it_out = 'http://api.bukget.org/3/plugins?size=10';
 
 function format (number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -201,7 +202,7 @@ $(document).on('click', '.browser .bar .button', function (e) {
 
   $page.html('<div class="indicator"><span class="fa fa-spin fa-spinner"></span></div>');
 
-  $.getJSON('http://api.bukget.org/3?callback=?', function (data) {
+  $.getJSON(try_it_out, function (data) {
     return $page.fadeOut(function () {
       $page.empty().html('<pre>' + JSON.stringify(data, null, 2) + '</pre>').fadeIn();
     });
