@@ -499,6 +499,11 @@ header nav .links a .radial.pending,
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
+  color: hsl(24, 100%, 50%);
+}
+
+.button-grey:hover {
+  color: black;
 }
 
 .features .browser .browser-page {
