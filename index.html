@@ -60,7 +60,7 @@ page: home
     
     <div class="browser">
       <div class="bar">
-        <input class="address" value="http://api.bukget.org/3/plugins" readonly />
+        <input class="address" value="loading..." readonly />
         <a class="button button-grey">Try It</a>
       </div>
 
@@ -138,6 +138,7 @@ var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popu
 var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity,dbo_page&callback=?';
 var stats = 'http://api.bukget.org/stats/todays_trends?callback=?';
 var trend = 'http://api.bukget.org/stats/trend/1?callback=?';
+var try_it_out = 'http://api.bukget.org/3/plugins?size=10';
 
 function format (number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -203,12 +204,14 @@ $.getJSON(trending, function (data) {
   }
 });
 
+$('.browser .bar .address').val(try_it_out);
+
 $(document).on('click', '.browser .bar .button', function (e) {
   var $page = $('.browser .browser-page .browser-page-inner');
 
   $page.html('<div class="indicator"><span class="fa fa-spin fa-spinner"></span></div>');
 
-  $.getJSON('http://api.bukget.org/3/plugins?size=20&callback=?', function (data) {
+  $.getJSON(try_it_out + '&callback=?', function (data) {
     return $page.fadeOut(function () {
       $page.empty().html('<pre>' + JSON.stringify(data, null, 2) + '</pre>').fadeIn();
     });
