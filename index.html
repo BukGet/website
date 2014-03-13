@@ -134,7 +134,7 @@ page: home
 
 <script>
 var latest = 'http://api.bukget.org/3?callback=?';
-var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.monthly&fields=plugin_name,slug,popularity,dbo_page&callback=?';
+var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.total&fields=plugin_name,slug,popularity,dbo_page&callback=?';
 var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity,dbo_page&callback=?';
 var stats = 'http://api.bukget.org/stats/todays_trends?callback=?';
 var trend = 'http://api.bukget.org/stats/trend/1?callback=?';
@@ -181,7 +181,7 @@ $.getJSON(popular, function (data) {
 
     $template.attr('href', entry.dbo_page);
     $template.find('h4').text(entry.plugin_name);
-    $template.find('.label').text(format(entry.popularity.monthly));
+    $template.find('.label').text(format(entry.popularity.total));
 
     $div.append($template);
   }
