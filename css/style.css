@@ -68,7 +68,7 @@ header nav .logo h1 {
   display: inline-block;
   font-size: 29px;
   font-family: 'Signika';
-  font-weight: 300;
+  font-weight: 600;
   margin: 0;
   padding: 0;
   text-transform: uppercase;
@@ -270,6 +270,7 @@ header nav .links a.active {
   width: 10px;
   height: 10px;
   margin-right: 2px;
+  position: relative;
 }
 
 .status .system > h2 {
@@ -284,6 +285,32 @@ header nav .links a.active {
   text-align: center;
 
   color: #888;
+}
+
+.status .block:hover:after {
+  position: absolute;
+  top: -34px;
+  background: hsla(0, 0%, 0%, 0.8);
+  display: block;
+  width: 200px;
+  height: 24px;
+  content: attr(title);
+  left: -90px;
+  border-radius: 2px;
+  color: white;
+  font-size: 10px;
+  line-height: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: Arial;
+  letter-spacing: 1px;
+  text-align: center;
+  opacity: 1;
+}
+
+.status .block:after {
+  opacity: 0;
+  transition: all .2s;
 }
 
 .status .block.ok,
@@ -308,6 +335,7 @@ header nav .links a .radial.down,
 header nav .links a .radial.pending,
 .status .overall.pending {
   background: #eee;
+  color: #888;
 }
 
 .help-bubble {
@@ -332,11 +360,14 @@ header nav .links a .radial.pending,
 .section.hero h4 {
   font-weight: 400;
   margin: 5px 0 40px;
+  color: #aaa;
 }
 
 .section.hero h1 {
-  font-weight: 600;
+  font-weight: 300;
   margin: 0px 0 0;
+  color: black;
+  font-size: 38px;
 }
 
 .section.hero .graphic {
