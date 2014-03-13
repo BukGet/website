@@ -465,14 +465,15 @@ header nav .links a .radial.pending,
   cursor: pointer;
 }
 
+.features .page-inner > h1 {
+  text-align: center;
+}
+
 .features .browser {
-  width: 60%; 
-  float: left; 
+  width: 600px; 
+  margin: 30px auto 60px;
   border: 1px solid hsl(207, 11%, 86%); 
   border-radius: 3px; 
-  margin-top: 30px; 
-  margin-right: 1%; 
-  margin-bottom: 60px; 
   box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.1);
 }
 
@@ -518,9 +519,23 @@ header nav .links a .radial.pending,
 }
 
 .features .browser .browser-page .start-page .browser-box {
-  padding: 50px;
+  display: block;
+  width: 102px;
+  height: 102px;
   margin: 10px 10px 0 0;
   border: 1px solid hsl(207, 11%, 86%);
   float: left;
   border-radius: 3px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 35px 10px;
+  font-size: 11px;
 }
+
+.features .browser .browser-page .start-page .browser-box:hover {
+  box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.1);
+}
+  
+
+
+
