@@ -304,6 +304,12 @@ header nav .links a .radial.down,
   background: #cc0000;
 }
 
+.status .block.pending,
+header nav .links a .radial.pending,
+.status .overall.pending {
+  background: #eee;
+}
+
 .help-bubble {
   display: inline-block;
   width: 24px;
@@ -347,11 +353,10 @@ header nav .links a .radial.down,
 
 .section.hero .graphic .circle.two {
   position: absolute;
-  top: 67px;
-  left: -109px;
-  padding: 30px;
-  border-color: hsl(20, 100%, 60%);
-  z-index: 1;
+  top: 108px;
+  left: -188px;
+  padding: 8px;
+  border-color: hsl(0, 0%, 75%);
 }
 
 .section.hero .graphic .circle.three {
@@ -364,10 +369,11 @@ header nav .links a .radial.down,
 
 .section.hero .graphic .circle.large {
   position: absolute;
-  top: 108px;
-  left: -187px;
-  padding: 8px;
-  border-color: hsl(0, 0%, 75%);
+  top: 67px;
+  left: -109px;
+  padding: 30px;
+  border-color: hsl(20, 100%, 60%);
+  z-index: 1;
 }
 
 .section.hero .graphic .line.one {
@@ -378,7 +384,7 @@ header nav .links a .radial.down,
   -ms-transform: rotate(-282deg); 
   -o-transform: rotate(-282deg); 
   top: 77px; 
-  left: -139px;
+  left: -140px;
 }
 
 .section.hero .graphic .line.two {
@@ -404,6 +410,14 @@ header nav .links a .radial.down,
   -o-transform: rotate(-318deg)); 
   top: 0px;
   left: -28px;
+}
+
+.section.hero .graphic .circle.large span {
+  line-height: 0;
+  position: absolute;
+  left: 13px;
+  font-size: 32px;
+  color: hsl(20, 100%, 60%);
 }
 
 .button {
