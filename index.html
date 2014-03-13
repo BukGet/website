@@ -44,8 +44,8 @@ page: home
     </div>
     
     <div class="stat">
-      <h4>469,722</h4>
-      <h1>Downloads in the last <strong>day</strong></h1>
+      <h4 id="requests">0</h4>
+      <h1>Requests in the last <strong>day</strong></h1>
       <div class="meta"></div>
     </div>
     
@@ -134,9 +134,10 @@ page: home
 
 <script>
 var latest = 'http://api.bukget.org/3?callback=?';
-var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.monthly&fields=plugin_name,slug,popularity&callback=?';
-var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity&callback=?';
+var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.monthly&fields=plugin_name,slug,popularity,dbo_page&callback=?';
+var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity,dbo_page&callback=?';
 var stats = 'http://api.bukget.org/stats/todays_trends?callback=?';
+var trend = 'http://api.bukget.org/stats/trend/1?callback=?';
 
 function format (number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -145,6 +146,10 @@ function format (number) {
 $.getJSON(stats, function (data) {
   $('#plugins').text(format(data.plugin_count));
   $('#versions').text(format(data.version_count));
+});
+
+$.getJSON(trend, function (data) {
+  $('#requests').text(format(data[0].total));
 });
 
 $.getJSON(latest, function (data) {
@@ -173,6 +178,7 @@ $.getJSON(popular, function (data) {
     var $template = $('[data-template="latest"] a').clone();
     var entry = data[index];
 
+    $template.attr('href', entry.dbo_page);
     $template.find('h4').text(entry.plugin_name);
     $template.find('.label').text(format(entry.popularity.monthly));
 
@@ -189,6 +195,7 @@ $.getJSON(trending, function (data) {
     var $template = $('[data-template="latest"] a').clone();
     var entry = data[index];
 
+    $template.attr('href', entry.dbo_page);
     $template.find('h4').text(entry.plugin_name);
     $template.find('.label').text(format(entry.popularity.daily));
 
