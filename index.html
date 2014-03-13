@@ -204,7 +204,7 @@ $(document).on('click', '.browser .bar .button', function (e) {
 
   $page.html('<div class="indicator"><span class="fa fa-spin fa-spinner"></span></div>');
 
-  $.getJSON(try_it_out, function (data) {
+  $.getJSON(try_it_out + '&callback=?', function (data) {
     return $page.fadeOut(function () {
       $page.empty().html('<pre>' + JSON.stringify(data, null, 2) + '</pre>').fadeIn();
     });
