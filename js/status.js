@@ -6,7 +6,7 @@ var Status = {
 
   messages: {
     warning: 'Systems are experiencing slight turbulance.',
-    error: 'Insurgence of errors, problems may occur.',
+    down: 'Majority of the system is down.',
     ok: 'All systems are GO.',
     pending: 'DDOSing the system, please hold.'
   },
@@ -100,7 +100,7 @@ Status.check = function () {
             var status = "ok";
 
             if (errors > 3) {
-              status = "error";
+              status = "down";
             } else if (errors) {
               status = "warning";
             }
@@ -150,7 +150,7 @@ Status.checkAll = function () {
               var status = "ok";
 
               if (errors > 3) {
-                status = "error";
+                status = "down";
               } else if (errors) {
                 status = "warning";
               }
