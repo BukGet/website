@@ -66,12 +66,11 @@ header nav .logo .entypo-bucket {
 
 header nav .logo h1 {
   display: inline-block;
-  font-size: 29px;
+  font-size: 36px;
   font-family: 'Signika';
-  font-weight: 600;
+  font-weight: 300;
   margin: 0;
   padding: 0;
-  text-transform: uppercase;
 }
 
 header nav .logo h1 strong {
@@ -156,7 +155,7 @@ header nav .links a.active {
   border-radius: 3px;
   margin-top: 30px;
   margin-right: 1%;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.1);
 }
 
@@ -354,7 +353,7 @@ header nav .links a .radial.pending,
 }
 
 .section.hero {
-  padding: 60px 0;
+  padding: 100px 0 140px;
 }
 
 .section.hero h4 {
@@ -463,4 +462,60 @@ header nav .links a .radial.pending,
 .button:hover {
   color: hsl(24, 100%, 50%);
   background: white;
+  cursor: pointer;
+}
+
+.features .browser {
+  width: 60%; 
+  float: left; 
+  border: 1px solid hsl(207, 11%, 86%); 
+  border-radius: 3px; 
+  margin-top: 30px; 
+  margin-right: 1%; 
+  margin-bottom: 60px; 
+  box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.1);
+}
+
+.features .browser .bar {
+  border-bottom: 1px solid hsl(207, 11%, 86%);
+  padding: 5px;
+  background: hsl(207, 11%, 98%);
+  border-radius: 3px 3px 0 0;
+}
+
+.features .browser .bar .address {
+  border: 1px solid hsl(207, 11%, 86%);
+  border-radius: 2px;
+  padding: 10px;
+  width: 84.7%;
+}
+
+.button-grey {
+  background: white;
+  border: 1px solid hsl(207, 11%, 86%);
+  padding: 8px;
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.features .browser .browser-page {
+  height: 230px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.features .browser .browser-page .start-page {
+  width: 336px;
+  margin: 0 auto;
+}
+
+.features .browser .browser-page .start-page .browser-box {
+  padding: 50px;
+  margin: 10px 10px 0 0;
+  border: 1px solid hsl(207, 11%, 86%);
+  float: left;
+  border-radius: 3px;
 }

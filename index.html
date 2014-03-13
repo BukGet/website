@@ -29,7 +29,28 @@ page: home
 
 <div class="features section">
   <div class="page-inner">
+
+    <h1>Its as easy as making a request.</h1>
     
+    <div class="browser">
+      <div class="bar">
+        <input class="address" value="http://api.bukget.org/3" readonly />
+        <a class="button button-grey">Try It</a>
+      </div>
+
+      <div class="browser-page">
+        <div class="browser-page-inner">
+          <div class="start-page">
+            <div class="browser-box"></div>
+            <div class="browser-box"></div>
+            <div class="browser-box"></div>
+            <div class="browser-box"></div>
+            <div class="browser-box"></div>
+            <div class="browser-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <div class="clear"></div>
   </div>
@@ -37,7 +58,7 @@ page: home
 
 <div class="leaderboard section">
   <div class="page-inner">
-    <h1>Leaderboard</h1>
+    <h1>Leaderboards</h1>
     
     <div class="list trending">
       <h2>Trending</h2>
@@ -172,5 +193,15 @@ $.getJSON(trending, function (data) {
 
     $div.append($template);
   }
+});
+
+$(document).on('click', '.browser .bar .button', function (e) {
+  var $page = $('.browser .browser-page .browser-page-inner');
+
+  $page.html('<div class="indicator"><span class="fa fa-spin fa-spinner"></span></div>');
+
+  $.getJSON('http://api.bukget.org/3?callback=?', function (data) {
+    return $page.fadeOut().empty().html('<pre>' + JSON.stringify(data, null, 2) + '</pre>').fadeIn();
+  });
 });
 </script>

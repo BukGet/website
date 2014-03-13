@@ -39,7 +39,7 @@ var Status = {
       "cpl": "/3/categories/Admin Tools",
       "al": "/3/authors",
       "apl": "/3/authors/NuclearW",
-      "se": "/3/search/versions.type/=/Alpha?sort=-popularity"
+      "se": "/3/search/versions.type/=/Alpha?sort=-popularity.daily"
     },
 
     "v2": {
@@ -50,7 +50,7 @@ var Status = {
       "cpl": "/2/bukkit/category/Admin Tools",
       "al": "/2/authors",
       "apl": "/2/bukkit/author/NuclearW",
-      "se": "/2/search/version/type/=/Alpha?sort=-popularity"
+      "se": "/2/search/version/type/=/Alpha?sort=-popularity.daily"
     },
 
     "v1": {
