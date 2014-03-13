@@ -78,9 +78,41 @@ Status.call = function (server, uri, callback) {
 };
 
 Status.check = function () {
-  Status.call(Status.servers[0], "/3/", function (status) {
-    $('.links .radial').removeClass('pending').addClass(status ? 'ok' : 'down');
-  });
+  var server = Status.servers[0];
+  var version = 'v3';
+
+  (function request (version) {
+    var sections = Status.versions[version];
+    var errors = 0;
+    var called = 0;
+    var length = Object.keys(sections).length;
+
+    for (var section in sections) {
+      (function request (section) {
+        var code = Status.codes[section];
+        var path = sections[section];
+
+        return Status.call(server, path, function (status, error) {
+          called++;
+          errors += (error == 'timeout' || !status ? 1 : 0);
+
+          if (called === length) {
+            var status = "ok";
+
+            if (errors > 3) {
+              status = "error";
+            } else if (errors) {
+              status = "warning";
+            }
+
+            $('.links .radial').removeClass('pending').addClass(status);
+          }
+
+          return false;
+        });
+      })(section);
+    }
+  })(version);
 };
 
 Status.checkAll = function () {
