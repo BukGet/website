@@ -47,6 +47,7 @@ header .header-inner,
 .page .page-inner {
   width: 960px;
   margin: 0px auto;
+  position: relative;
 }
 
 header nav {
@@ -65,11 +66,12 @@ header nav .logo .entypo-bucket {
 
 header nav .logo h1 {
   display: inline-block;
-  font-size: 42px;
+  font-size: 29px;
   font-family: 'Signika';
   font-weight: 300;
   margin: 0;
   padding: 0;
+  text-transform: uppercase;
 }
 
 header nav .logo h1 strong {
@@ -147,9 +149,15 @@ header nav .links a.active {
 }
 
 .leaderboard .list {
-  padding: 30px 0;
-  width: 33%;
+  padding: 10px;
+  width: 30%;
   float: left;
+  border: 1px solid hsl(207, 11%, 86%);
+  border-radius: 3px;
+  margin-top: 30px;
+  margin-right: 1%;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.1);
 }
 
 .leaderboard .list > h2 {
@@ -168,6 +176,7 @@ header nav .links a.active {
   margin-bottom: 5px;
   color: #ff6600;
   font-size: 14px;
+  border-bottom: 1px dotted hsl(207, 11%, 86%);
 }
 
 .leaderboard .list a:hover {
@@ -176,6 +185,10 @@ header nav .links a.active {
 
 .leaderboard .list a h4 {
   display: inline-block;
+  padding: 10px 8px 10px 0;
+  background: white;
+  line-height: 0px;
+  margin-bottom: -1px;
 }
 
 .leaderboard .list a .installs,
@@ -185,6 +198,7 @@ header nav .links a.active {
   background: white;
   border-radius: 2px;
   padding: 2px 5px;
+  float: right;
 }
 
 
@@ -195,19 +209,22 @@ header nav .links a.active {
 }
 
 .stats {
-  background: #eee;
+  background: hsl(24, 100%, 50%);
+}
+
+.stats .page-inner > h1 {
+  color: white;
 }
 
 .stat {
   float: left;
   display: inner-block;
   width: 33%;
-  
   padding: 20px 0;
 }
 
 .stat h1 {
-  color: #aaa;
+  color: white;
   font-size: 18px;
   font-weight: 400;
   font-family: 'Open Sans';
@@ -223,6 +240,7 @@ header nav .links a.active {
 .stat h4 {
   font-size: 72px;
   font-weight: 400;
+  color: white;
 }
 
 .status .overall p {
@@ -299,4 +317,105 @@ header nav .links a .radial.down,
 
 .template {
   display: none;
+}
+
+.section.hero {
+  padding: 60px 0;
+}
+
+.section.hero h4 {
+  font-weight: 400;
+  margin: 5px 0 40px;
+}
+
+.section.hero h1 {
+  font-weight: 600;
+  margin: 0px 0 0;
+}
+
+.section.hero .graphic {
+  position: absolute;
+  right: 0;
+}
+
+.section.hero .graphic .circle {
+  border: 2px solid;
+  padding: 5px;
+  border-radius: 50%;
+  color: hsl(0, 0%, 80%);
+}
+
+.section.hero .graphic .circle.two {
+  position: absolute;
+  top: 67px;
+  left: -109px;
+  padding: 30px;
+  border-color: hsl(20, 100%, 60%);
+  z-index: 1;
+}
+
+.section.hero .graphic .circle.three {
+  position: absolute;
+  top: 175px;
+  left: -34px;
+  padding: 15px;
+  border-color: hsl(0, 0%, 68%);
+}
+
+.section.hero .graphic .circle.large {
+  position: absolute;
+  top: 108px;
+  left: -187px;
+  padding: 8px;
+  border-color: hsl(0, 0%, 75%);
+}
+
+.section.hero .graphic .line.one {
+  width: 2px; height: 64px; position: absolute; 
+  background: hsl(0, 0%, 75%); 
+  -webkit-transform: rotate(-282deg); 
+  -moz-transform: rotate(-282deg); 
+  -ms-transform: rotate(-282deg); 
+  -o-transform: rotate(-282deg); 
+  top: 77px; 
+  left: -139px;
+}
+
+.section.hero .graphic .line.two {
+  width: 2px; 
+  height: 64px; position: absolute; 
+  background: hsl(0, 0%, 68%); 
+  -webkit-transform: rotate(-390deg);
+  -moz-transform: rotate(-390deg);
+  -ms-transform: rotate(-390deg);
+  -o-transform: rotate(-390deg); 
+  top: 118px; 
+  left: -41px;
+}
+
+.section.hero .graphic .line.three {
+  width: 2px;
+  height: 88px;
+  position: absolute;
+  background: #ccc;
+  -webkit-transform: rotate(-318deg);
+  -moz-transform: rotate(-318deg);
+  -ms-transform: rotate(-318deg);
+  -o-transform: rotate(-318deg)); 
+  top: 0px;
+  left: -28px;
+}
+
+.button {
+  border: 2px solid hsl(24, 100%, 50%);
+  border-radius: 2px;
+  padding: 8px 12px;
+  font-weight: 600;
+  background: hsl(24, 100%, 50%);
+  color: white;
+}
+
+.button:hover {
+  color: hsl(24, 100%, 50%);
+  background: white;
 }

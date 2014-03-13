@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
 
-    <title>{{ site.name }}</title>
+    <title>{{ site.name }} - {{ site.title }}</title>
     <meta name="keywords" content="plugin,manager,package,server,minecraft,bukkit,documentation,api,entrepreneurs,host">
 
-    <meta content="Bukget" property="og:title">
-    <meta content="Bukget" property="og:site_name">
+    <meta content="{{ site.name }}" property="og:title">
+    <meta content="{{ site.name }}" property="og:site_name">
     <meta content="website" property="og:type">
     <meta content="http://bukget.org" property="og:url">
     <meta content="Manage plugins with ease for minecraft servers running on bukkit." property="og:description">
@@ -15,7 +15,7 @@
     <meta name="twitter:site" value="@stevemcgrath">
     <meta name="twitter:card" value="summary">
     <meta name="twitter:url" value="http://bukget.org">
-    <meta name="twitter:title" value="Bukget">
+    <meta name="twitter:title" value="{{ site.name }}">
     <meta name="twitter:description" value="Manage plugins with ease for minecraft servers running on bukkit.">
 
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />

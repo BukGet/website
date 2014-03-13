@@ -1,8 +1,40 @@
 ---
 layout: default
-title: Home
+title: Bukkit Plugin Information for Minecraft Servers
+page: home
 ---
 <div class="page">
+<div class="hero section">
+  <div class="page-inner">
+
+    <div class="graphic">
+      <div class="circle"></div>
+      <div class="circle two"></div>
+      <div class="circle three"></div>
+      <div class="circle large"></div>
+      <div class="line one"></div>
+      <div class="line two"></div>
+      <div class="line three"></div>
+    </div>
+    
+    <h1>The Easiest API for Minecraft Plugin Information</h1>
+    <h4>Build a better plugin management system.</h4>
+
+    <a href="#" class="button button-large button-action">Documentation</a>
+    
+    
+    <div class="clear"></div>
+  </div>
+</div>
+
+<div class="features section">
+  <div class="page-inner">
+    
+    
+    <div class="clear"></div>
+  </div>
+</div>
+
 <div class="leaderboard section">
   <div class="page-inner">
     <h1>Leaderboard</h1>
@@ -15,8 +47,6 @@ title: Home
       <div class="entries"><div class="indicator"><span class="fa fa-spin fa-spinner"></span></div></div>
     </div>
     
-    
-    
     <div class="list upcoming">
       <h2>New &amp; Upcoming</h2>
       
@@ -24,7 +54,6 @@ title: Home
       
       <div class="entries"><div class="indicator"><span class="fa fa-spin fa-spinner"></span></div></div>
     </div>
-    
     
     <div class="list popular">
       <h2>Popular</h2>
@@ -87,9 +116,13 @@ var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popu
 var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity&callback=?';
 var stats = 'http://api.bukget.org/stats/todays_trends?callback=?';
 
+function format (number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 $.getJSON(stats, function (data) {
-  $('#plugins').text(data.plugin_count);
-  $('#versions').text(data.version_count);
+  $('#plugins').text(format(data.plugin_count));
+  $('#versions').text(format(data.version_count));
 });
 
 $.getJSON(latest, function (data) {
@@ -119,7 +152,7 @@ $.getJSON(popular, function (data) {
     var entry = data[index];
 
     $template.find('h4').text(entry.plugin_name);
-    $template.find('.label').text(entry.popularity.monthly);
+    $template.find('.label').text(format(entry.popularity.monthly));
 
     $div.append($template);
   }
@@ -135,7 +168,7 @@ $.getJSON(trending, function (data) {
     var entry = data[index];
 
     $template.find('h4').text(entry.plugin_name);
-    $template.find('.label').text(entry.popularity.monthly);
+    $template.find('.label').text(format(entry.popularity.daily));
 
     $div.append($template);
   }
