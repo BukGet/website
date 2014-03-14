@@ -54,7 +54,7 @@ Status.checkAll = function () {
       var the_server = data.servers[server];
       for (var version in data.servers[server]) {
         var the_version = the_server[version];
-        var $blocks = $('.system.' + version + ' .blocks');
+        var $blocks = $('.system.' + server.split('.')[0] + '.' + version + ' .blocks');
         var length = Object.keys(the_version).length;
         $blocks.empty();
         for (var section in the_version) {
