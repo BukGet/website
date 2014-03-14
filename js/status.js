@@ -1,9 +1,4 @@
 var Status = {
-  servers: [
-    "dallas.api.bukget.org", 
-    "paris.api.bukget.org"
-  ],
-
   messages: {
     warning: 'Systems are experiencing slight turbulance.',
     down: 'Majority of the system is down.',
@@ -24,148 +19,56 @@ var Status = {
     "al": "Author List",
     "apl": "Author Plugin List",
     "se": "Search"
-  },
-
-  versions: {
-    "v3": {
-      "pl": "/3/plugins",
-      "plb": "/3/plugins/bukkit",
-      "pd": "/3/plugins/bukkit/pvp-arena",
-      "pdl": "/3/plugins/bukkit/pvp-arena/latest",
-      "pdr": "/3/plugins/bukkit/pvp-arena/release",
-      "pdb": "/3/plugins/bukkit/pvp-arena/beta",
-      "pda": "/3/plugins/bukkit/pvp-arena/alpha",
-      "cl": "/3/categories",
-      "cpl": "/3/categories/Admin Tools",
-      "al": "/3/authors",
-      "apl": "/3/authors/NuclearW",
-      "se": "/3/search/versions.type/=/Alpha?sort=-popularity.daily"
-    },
-
-    "v2": {
-      "plb": "/2/bukkit/plugins",
-      "pd": "/2/bukkit/plugin/pvp-arena",
-      "pdl": "/2/bukkit/plugin/pvp-arena/latest",
-      "cl": "/2/categories",
-      "cpl": "/2/bukkit/category/Admin Tools",
-      "al": "/2/authors",
-      "apl": "/2/bukkit/author/NuclearW",
-      "se": "/2/search/version/type/=/Alpha?sort=-popularity.daily"
-    },
-
-    "v1": {
-      "pl": "/1/plugins",
-      "pd": "/1/plugin/pvp-arena",
-      "pdl": "/1/plugin/pvp-arena/latest",
-      "cl": "/1/categories",
-      "cpl": "/1/categories/Admin Tools",
-      "al": "/1/authors",
-      "apl": "/1/author/NuclearW",
-      "se": "/1/search/slug/like/pvp-arena"
-    }
   }
 };
 
-Status.call = function (server, uri, callback) {
-  var url = "http://" + server + uri;
-
+Status.call = function (callback) {
   $.ajax({
-    url: url,
-    timeout: 20000,
-    success: function (data) { callback(true) },
-    error: function (xml, status, error) { callback(false, error); }
+    url: 'http://bukget-monitor.herokuapp.com',
+    success: function (data) { callback(data); },
+    error: function (xml, status, error) { callback(null, error); }
   });
 };
 
 Status.check = function () {
-  var server = Status.servers[0];
-  var version = 'v3';
-
-  (function request (version) {
-    var sections = Status.versions[version];
-    var errors = 0;
-    var called = 0;
-    var length = Object.keys(sections).length;
-
-    for (var section in sections) {
-      (function request (section) {
-        var code = Status.codes[section];
-        var path = sections[section];
-
-        return Status.call(server, path, function (status, error) {
-          called++;
-          errors += (error == 'timeout' || !status ? 1 : 0);
-
-          if (called === length) {
-            var status = "ok";
-
-            if (errors > 3) {
-              status = "down";
-            } else if (errors) {
-              status = "warning";
-            }
-
-            $('.links .radial').removeClass('pending').addClass(status);
-          }
-
-          return false;
-        });
-      })(section);
+  Status.call(function (data, error) {
+    if (error) {
+      return;
     }
-  })(version);
+    
+    $('.links .radial').removeClass('pending').addClass(data.message);
+  });
 };
 
 Status.checkAll = function () {
-  var server = Status.servers[0];
   var $overall = $('.overall');
-
   $overall.empty().addClass('pending').html('<p>' + Status.messages.pending + '</p>');
+  Status.call(function (data, error) {
+    if (error) {
+      return;
+    }
+    
+    $('.links .radial').removeClass('pending').addClass(data.status);
 
-  for (var version in Status.versions) {
-    (function request (version) {
-      var sections = Status.versions[version];
-      var $blocks = $('.system.' + version + ' .blocks');
-      var errors = 0;
-      var called = 0;
-      var length = Object.keys(sections).length;
-
-      $blocks.empty();
-
-      for (var section in sections) {
-        (function request (section) {
+    for (var server in data.servers) {
+      var the_server = data.servers[server];
+      for (var version in data.servers[server]) {
+        var the_version = the_server[version];
+        var $blocks = $('.system.' + version + ' .blocks');
+        var length = Object.keys(the_version).length;
+        $blocks.empty();
+        for (var section in the_version) {
           var code = Status.codes[section];
-          var path = sections[section];
           var $template = $('[data-template="block"] span').clone();
 
-          $template.addClass('pending');
+          //$template.addClass('pending');
+          $template.addClass(the_version[section]);
           $template.attr('title', code);
           $blocks.append($template);
 
-          return Status.call(server, path, function (status, error) {
-            called++;
-            errors += (error == 'timeout' || !status ? 1 : 0);
-            $template.removeClass('pending').addClass(error == 'timeout' ? 'warning' : (status ? 'ok' : 'down'));
-
-            if (called === length && version === 'v3') {
-              var status = "ok";
-
-              if (errors > 3) {
-                status = "down";
-              } else if (errors) {
-                status = "warning";
-              }
-
-              $overall.empty().removeClass('pending').addClass(status).html('<p>' + Status.messages[status] + '</p>');
-            }
-
-            return;
-          });
-        })(section);
+          $overall.empty().removeClass('pending').addClass(status).html('<p>' + Status.messages[data.status] + '</p>');
+        }
       }
-    })(version);
-  }
-
-  return;
+    }
+  }); 
 };
-
-Status.check();
