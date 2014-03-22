@@ -525,20 +525,20 @@ header nav .links a .radial.pending,
 }
 
 .features .browser .browser-page {
-  height: 230px;
+  height: 190px;
   padding: 20px;
   overflow: auto;
 }
 
 .features .browser .browser-page .start-page {
-  width: 336px;
+  width: 550px;
   margin: 0 auto;
 }
 
 .features .browser .browser-page .start-page .browser-box {
   display: block;
-  width: 102px;
-  height: 102px;
+  width: 172px;
+  height: 172px;
   margin: 10px 10px 0 0;
   border: 1px solid hsl(207, 11%, 86%);
   float: left;
@@ -562,4 +562,6 @@ header nav .links a .radial.pending,
   border-bottom: 1px solid #eee;
 }
 
-
+.left .github-fork-ribbon {
+  background-color: #333;
+}
