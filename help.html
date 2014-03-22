@@ -6,7 +6,8 @@ title: Help
 <div class="page">
 <div class="section">
   <div class="page-inner">
-  	{% markdown help.md %}
+  	{% capture my_include %} {% include help.md %} {% endcapture %}
+  	{{ my_include | markdownify }}
     <div class="clear"></div>
   </div>
 </div>

@@ -1,4 +1,3 @@
 name: Bukget
 markdown: kramdown
 pygments: true
-gems: [kramdown, markdown]
