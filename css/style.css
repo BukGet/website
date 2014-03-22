@@ -55,6 +55,10 @@ header .header-inner {
   padding: 10px 0;
 }
 
+header .header-inner a {
+  text-decoration: none;
+}
+
 header .header-inner,
 .page .page-inner {
   width: 960px;
@@ -96,6 +100,7 @@ header nav .links {
   right: 0;
   top: 0;
   line-height: 50px;
+  text-decoration: none;
 }
 
 header nav .links a {
