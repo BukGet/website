@@ -59,16 +59,16 @@ Contains various information about the last several generations in the API. Incl
 
 # Group Plugins
 
-## Plugin Listing [/3/plugins{?size,start,fields,sort} or /3/plugins/{server}{?size,start,fields,sort}]
+## Plugin Listing [/3/plugins{?size,start,fields,sort}]
 The plugin listing is simply a list of plugins in the API. The information can be represented however the user wishes by modifying the query attributes and pagination directly from the API is also supported. Optionally the information can further be narrowed down based on the server platform the plugins are written for (e.g. bukkit).
 
 + Parameters
 
-    + server = `bukkit` (optional, String, `bukkit`) ... What server platform to grab plugins for.
-    + size = `undefined` (optional, Integer, `10`) ... How many documents do you want to return.
-    + start = `0` (optional, Integer, `5`) ... From where the query should start.
-    + sort = `slug` (optional, String, `plugin_name`) ... Which field to sort by. Use a - before the field name to perform an inverted sort.
-    + fields = `slug,plugin_name,description` (optional, String, `plugin_name,slug`) ... Which fields the request should return.
+    + server (optional, String, `bukkit`) ... What server platform to grab plugins for.
+    + size (optional, Integer, `10`) ... How many documents do you want to return.
+    + start (optional, Integer, `5`) ... From where the query should start.
+    + sort (optional, String, `plugin_name`) ... Which field to sort by. Use a - before the field name to perform an inverted sort.
+    + fields (optional, String, `slug,plugin_name,description`) ... Which fields the request should return.
 + Model
 
     + Headers

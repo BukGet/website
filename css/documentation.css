@@ -1,15 +1,15 @@
 .hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}
-
+ 
 body,
 h4,
 h5 {
-  font-family: 'Roboto' sans-serif !important;
+  /* font-family: 'Roboto' sans-serif !important; */
 }
 h1,
 h2,
 h3,
 .aglio {
-  font-family: 'Raleway' sans-serif !important;
+  /* font-family: 'Raleway' sans-serif !important; */
 }
 h1 a,
 h2 a,
@@ -25,11 +25,11 @@ h4:hover a,
 h5:hover a {
   display: inline;
 }
-
+ 
 code {
   color: #444;
   background-color: #ddd;
-  font-family: 'Inconsolata' monospace !important;
+  font-family: 'Inconsolata', monospace !important;
 }
 a[data-target] {
   cursor: pointer;
@@ -42,9 +42,14 @@ h4 {
 .panel {
   overflow: hidden;
 }
+
+.container {
+  width: 960px;
+}
 .panel-heading code {
-  color: #c7254e;
+  color: hsl(345, 90%, 0%);
   background-color: transparent;
+  font-size: 14px;
 }
 .panel-heading h3 {
   margin-top: 10px;
@@ -54,22 +59,131 @@ a.list-group-item {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  border: none;
+  padding: 10px 0;
 }
 a.list-group-item.heading {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  /* border-bottom: 1px solid hsl(0, 0%, 95%); */
+  font-weight: 600;
+  padding: 10px 0;
+  color: hsl(24, 100%, 50%);
 }
 .list-group-item.collapse {
   display: none;
 }
 #nav {
   margin-top: 100px;
-  min-width: 255px;
+  min-width: 228px;
   top: 0;
   bottom: 0;
   padding-right: 12px;
   padding-bottom: 12px;
   overflow-y: auto;
 }
-.col-md-9 div header {
-  display: none;
+
+
+p {
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
 }
+h2 {
+    margin-bottom: .5em;
+    font-weight: 600;
+    font-family: 'Open Sans' !important;
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 0.5em !important;
+}
+
+ul, ol {
+    margin-bottom: 1.5em;
+}
+a.list-group-item:hover {
+    background: none;
+}
+h4 {
+    margin-bottom: 0.5em;
+}
+section .panel-body {
+    padding: 15px;
+}
+h5 {
+    margin-bottom: 0.5em !important;
+}
+
+.panel-default>.panel-heading {
+  background: none !important;
+}
+
+.panel-default {
+    border: none !important;
+}
+
+.panel-info>.panel-heading {
+  color: hsl(207, 100%, 50%);
+  background-color: hsl(207, 100%, 96%);
+  border-color: hsl(207, 100%, 85%);
+  padding: 5px;
+}
+ 
+.panel-info {
+  border-color: hsl(207, 100%, 85%);
+}
+ 
+code {
+  color: hsl(0, 0%, 27%);
+  border: 1px solid hsl(0, 0%, 87%);
+  font-family: 'Inconsolata', monospace !important;
+  background: hsl(0, 100%, 100%);
+}
+ 
+.panel-heading code {
+  border: none;
+}
+ 
+dt {
+  padding-right: 20px;
+}
+
+.dl-horizontal code {
+  margin-left: -5px;
+}
+
+dt span {
+    display: block;
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+}
+
+pre code {
+  border: none;
+}
+
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.428571429;
+  color: hsl(0, 0%, 20%);
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: hsl(0, 0%, 98%);
+  border: 1px solid hsl(0, 0%, 86%);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px hsla(0, 0%, 0%, 0.05);
+}
+ 
+.btn-primary {
+  color: hsl(207, 100%, 50%);
+  background-color: hsl(0, 100%, 100%);
+  border-color: hsl(207, 100%, 85%);
+  font-weight: 600;
+}
+
+.list-group-item 

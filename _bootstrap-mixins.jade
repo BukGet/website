@@ -38,14 +38,15 @@ mixin Parameters(params)
             dl.dl-horizontal
                 each name in Object.keys(params)
                     - var param = params[name]
-                    dt= name
                     dd
-                        code= param.type
-                        | &nbsp;
                         if param.required
                             span.required (required)
                         else
-                            span (optional)
+                            dt
+                                != name
+                                span optional
+                        | &nbsp;
+                        code= param.type
                         | &nbsp;
                         if param.default
                             span.text-info.default
@@ -185,10 +186,6 @@ mixin Icon(method)
 
 mixin Content(getButtonClass, multipage)
     div(data-bind=multipage ? "visible: page() == 'home'" : undefined)
-        header
-            .page-header
-                h1#top= api.name || 'API Documentation'
-    
         .description!= markdown(api.description)
 
         if multipage
