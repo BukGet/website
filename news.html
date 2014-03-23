@@ -1,0 +1,25 @@
+---
+layout: default
+title: Help
+---
+
+<div class="page">
+<div class="section">
+  <div class="page-inner">
+  	<h1 style="margin-bottom: 20px">News</h1>
+	  {% for post in site.posts %}
+	  	<div class="post">
+	    	<h2>{{ post.title }}</h2>
+	    	<h5>{{ post.date | date: "%-d %B %Y" }}</h5>
+	    	<div class="post-content">
+	    		{{ post.content }}
+	    	</div>
+    	</div>
+	  {% endfor %}
+    <div class="clear"></div>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+  Status.check();
+</script>
