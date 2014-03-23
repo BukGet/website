@@ -186,4 +186,6 @@ pre {
   font-weight: 600;
 }
 
-.list-group-item 
+.dl-horizontal p {
+  margin-left: 160px;
+} 

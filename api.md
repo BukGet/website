@@ -21,7 +21,7 @@ Contains various information about the last several generations in the API. Incl
 
 + Parameters
 
-    + size (optional, integer, `1`) ... How many generations you want info about.
+    + size (optional, Integer, `1`) ... How many generations you want info about.
 
 + Model
 
