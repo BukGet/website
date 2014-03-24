@@ -16,7 +16,7 @@ The following items may be exposed via the API, however are used internally by t
 
 # Group General
 
-## Generation Information [/3?size={size} or /3/geninfo?size={size}]
+## Generation Information [/3/geninfo{?size}]
 Contains various information about the last several generations in the API. Includes things like when, what server, parsing type, how long it took, and what changes had occurred. Optionally the user can specify how many generations back they would like to look.
 
 + Parameters

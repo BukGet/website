@@ -272,10 +272,12 @@ body > header nav .links a.active {
 }
 
 .status .system {
-  width: 33%;
+  width: 25%;
   display: inline-block;
   float: left;
   padding: 20px 0 60px;
+  margin-left: 25%;
+  margin-right: -25%;
   text-align: center;
 }
 
