@@ -544,6 +544,12 @@ http://api.bukget.org/3/updates?slugs=worldedit&hashes=49ab15446ae1bfce8801433cd
     
     [Updates][]
 
+### Updates [POST]
+
++ Response 200
+    
+    [Updates][]
+
 # Group Search
 
 ## Plugin Search [/3/search/{field}/{action}/{value}{?size,start,fields,sort}]
