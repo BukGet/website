@@ -491,6 +491,59 @@ http://api.bukget.org/3/authors/bukkit/iAlexak?size=1
     
     [Author Plugin Listing][]
 
+# Group Update
+## Updates [/3/updates/{?slugs,hashes, filenames}]
+Outputs the latest, latest release, beta, alpha, versions for each plugin found.
+
++ Parameters
+    + slugs (optional, String, `worldedit,dynmap`) ... Which slug(s) to search for.
+    + hashes (optional, String, `49ab15446ae1bfce8801433cd75f8fc9`) ... Which file md5(s) to search for.
+    + filenames (optional, String, `dynmap-1.9.3.jar`) ... Which filename(s) to search for.
+
++ Model
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            [
+                {
+                    "slug": "abitofrealism", // Plugin slug
+                    "plugin_name": "AbitOfRealism", // Plugin name
+                    "versions": { // List of version objects
+                        "latest": { // Version type
+                            "version": "0.3.1", // Version
+                            "download": "http://dev.bukkit.org/media/files/599/604/AbitOfRealism.jar", // Download link
+                            "md5": "236c18df1d15e149fe91675c08efa8b5" // File md5
+                        },
+                        "beta": {
+                            "version": "0.3.1",
+                            "download": "http://dev.bukkit.org/media/files/599/604/AbitOfRealism.jar",
+                            "md5": "236c18df1d15e149fe91675c08efa8b5"
+                        },
+                        "alpha": {
+                            "version": "0.1",
+                            "download": "http://dev.bukkit.org/media/files/596/293/AbitOfRealism.jar",
+                            "md5": "2458133b2813b66e2c162ce7bbdf5c18"
+                        }
+                    }
+                }
+            ]
+
+### Updates [GET]
+Examples:
+```no-highlight
+http://api.bukget.org/3/updates?slugs=dynmap,worldedit
+http://api.bukget.org/3/updates?hashes=49ab15446ae1bfce8801433cd75f8fc9
+http://api.bukget.org/3/updates?slugs=worldedit&hashes=49ab15446ae1bfce8801433cd75f8fc9&filenames=dynmap-1.9.3.jar
+```
+
++ Response 200
+    
+    [Updates][]
+
 # Group Search
 
 ## Plugin Search [/3/search/{field}/{action}/{value}{?size,start,fields,sort}]
@@ -630,7 +683,7 @@ Filters examples:
     }
 ]
 ```
-`NOT` example:
+NOT` example:
 ```
 {
     "field": "curse_id",
