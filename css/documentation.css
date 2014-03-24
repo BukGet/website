@@ -97,6 +97,10 @@ h1, h2, h3, h4 {
   margin-bottom: 0.5em !important;
 }
 
+.logo h1 {
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica' !important;
+}
+
 ul, ol {
     margin-bottom: 1.5em;
 }

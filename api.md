@@ -3,7 +3,7 @@ HOST: http://api.bukget.org
 
 # BukGet API Documentation
 ## About
-BukGet is an API for getting data about bukkit plugins. The system parses [BukkitDev](http://dev.bukkit.org) every 6 hours and looks for new changes in the data to update. All of this is automatic and happens without any developer intervention. Furthermore if you notice any issues, we encourage you to click the issues menu item above and open a ticket with us. This is the only way we can know about parser errors or issues and make any needed corrections. Below is the schedule that BukGet uses for generating the data. Keep in mind that if you update a plugin, it can take just over 6 hours for your plugin to hit the index.
+BukGet is an API for getting data about bukkit plugins. The system parses [BukkitDev](http://dev.bukkit.org) every 6 hours and looks for new changes in the data to update. All of this is automatic and happens without any developer intervention. Furthermore if you notice any issues, we encourage you to open a ticket with us over at the [issue Tracker](https://github.com/Bukget/api/issues). This is the only way we can know about parser errors or issues and make any needed corrections. Below is the schedule that BukGet uses for generating the data. Keep in mind that if you update a plugin, it can take just over 6 hours for your plugin to hit the index.
 
 ## Recommended usage guidelines
 We recommend that when communicating to the API, that you use a custom User-Agent string (UA String) to identify your application. We are tracking these UA strings and are using these to determine what applications are utilizing the API. If you have any questions about User Agent strings, please contact us in the IRC channel.
