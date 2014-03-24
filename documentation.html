@@ -2,8 +2,8 @@
 layout: default
 title: Documentation
 ---
-<br><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="collapse hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#general" class="list-group-item heading">General</a><a href="#general-generation-information" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Generation Information</a></div><div class="list-group"><a href="#plugins" class="list-group-item heading">Plugins</a><a href="#plugins-plugin-listing" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Plugin Listing</a></div><p style="text-align: center"><a href="http://api.bukget.org">http://api.bukget.org</a></p></nav></div><div class="col-md-9"><div><div class="description"><h2 id="about">About</h2>
-<p>BukGet is an API for getting data about bukkit plugins. The system parses <a href="http://dev.bukkit.org">BukkitDev</a> every 6 hours and looks for new changes in the data to update. All of this is automatic and happens without any developer intervention. Furthermore if you notice any issues, we encourage you to click the issues menu item above and open a ticket with us. This is the only way we can know about parser errors or issues and make any needed corrections. Below is the schedule that BukGet uses for generating the data. Keep in mind that if you update a plugin, it can take just over 6 hours for your plugin to hit the index.</p>
+<br><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="collapse hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#general" class="list-group-item heading">General</a><a href="#general-generation-information" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Generation Information</a><a href="#general-specific-generation-information" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Specific Generation Information</a></div><div class="list-group"><a href="#plugins" class="list-group-item heading">Plugins</a><a href="#plugins-plugin-listing" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Plugin Listing</a><a href="#plugins-plugin-details" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Plugin Details</a><a href="#plugins-plugin-download" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Plugin Download</a></div><div class="list-group"><a href="#categories" class="list-group-item heading">Categories</a><a href="#categories-category-listing" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Category Listing</a><a href="#categories-category-plugin-listing" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Category Plugin Listing</a></div><div class="list-group"><a href="#authors" class="list-group-item heading">Authors</a><a href="#authors-author-listing" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Author Listing</a><a href="#authors-author-plugin-listing" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Author Plugin Listing</a></div><div class="list-group"><a href="#search" class="list-group-item heading">Search</a><a href="#search-plugin-search" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Plugin Search</a><a href="#search-post-plugin-search" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;POST Plugin Search</a></div><div class="list-group"><a href="#statistics" class="list-group-item heading">Statistics</a><a href="#statistics-invalid-versions-list" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Invalid versions list</a><a href="#statistics-current-statistics" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Current statistics</a><a href="#statistics-trends" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Trends</a></div><p style="text-align: center"><a href="http://api.bukget.org">http://api.bukget.org</a></p></nav></div><div class="col-md-9"><div><div class="description"><h2 id="about">About</h2>
+<p>BukGet is an API for getting data about bukkit plugins. The system parses <a href="http://dev.bukkit.org">BukkitDev</a> every 6 hours and looks for new changes in the data to update. All of this is automatic and happens without any developer intervention. Furthermore if you notice any issues, we encourage you to open a ticket with us over at the <a href="https://github.com/Bukget/api/issues">issue tracker</a>. This is the only way we can know about parser errors or issues and make any needed corrections. Below is the schedule that BukGet uses for generating the data. Keep in mind that if you update a plugin, it can take just over 6 hours for your plugin to hit the index.</p>
 <h2 id="recommended-usage-guidelines">Recommended usage guidelines</h2>
 <p>We recommend that when communicating to the API, that you use a custom User-Agent string (UA String) to identify your application. We are tracking these UA strings and are using these to determine what applications are utilizing the API. If you have any questions about User Agent strings, please contact us in the IRC channel.</p>
 <h2 id="exposed-internal-flags">Exposed internal flags</h2>
@@ -11,49 +11,511 @@ title: Documentation
 <ul>
 <li>_use_dbo: This is an internal flag that is set on a plugin to denote that the plugin parser will use the version parsed from the DBO page over the plugin.yml version. This is pragmatically set when 3 or more plugin versions exist when there is only one unique plugin version pulled from the plugin.yml.</li>
 </ul>
-</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="general">General&nbsp;<a href="#general"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="general-generation-information">Generation Information&nbsp;<a href="#general-generation-information"><i class="fa fa-link"></i></a></h4><p>Contains various information about the last several generations in the API. Includes things like when, what server, parsing type, how long it took, and what changes had occurred. Optionally the user can specify how many generations back they would like to look.</p>
-<section id="general-generation-information-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Generation Information</span><a href="#general-generation-information-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3?size={size} or /3/geninfo?size={size}</code></div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><dt>size<span>optional</span></dt>&nbsp;<code>integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span>&nbsp;<p>How many generations you want info about.</p>
-</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#52367" class="pull-right">Toggle</a></li><li id="52367" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>[
-    {
-        "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-number">1355967522</span></span>,
-        "<span class="hljs-attribute">parser</span>": <span class="hljs-value"><span class="hljs-string">"bukkit"</span></span>,
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"speedy"</span></span>,
-        "<span class="hljs-attribute">duration</span>": <span class="hljs-value"><span class="hljs-number">943</span></span>,
-        "<span class="hljs-attribute">changes</span>": <span class="hljs-value">[
-            {
-                "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"9.5.3"</span></span>,
-                "<span class="hljs-attribute">plugin</span>": <span class="hljs-value"><span class="hljs-string">"preciousstones"</span>
-            </span>},
-            {
-                "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"1.0"</span></span>,
-                "<span class="hljs-attribute">plugin</span>": <span class="hljs-value"><span class="hljs-string">"bankit"</span>
-            </span>}
-        ]</span>,
-        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"50d26c2270164b5889ab6f67"</span>
-    </span>}
-]
-</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="plugins">Plugins&nbsp;<a href="#plugins"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="plugins-plugin-listing">Plugin Listing&nbsp;<a href="#plugins-plugin-listing"><i class="fa fa-link"></i></a></h4><p>The plugin listing is simply a list of plugins in the API. The information can be represented however the user wishes by modifying the query attributes and pagination directly from the API is also supported. Optionally the information can further be narrowed down based on the server platform the plugins are written for (e.g. bukkit).</p>
-<section id="plugins-plugin-listing-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Plugin Listing</span><a href="#plugins-plugin-listing-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/plugins{?size,start,fields,sort}</code></div><div class="panel-body"><p>Get a list of plugins. Example:</p>
-<pre><code class="lang-no-highlight">http://api.bukget.org/3/plugins?size=10
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="general">General&nbsp;<a href="#general"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="general-generation-information">Generation Information&nbsp;<a href="#general-generation-information"><i class="fa fa-link"></i></a></h4><p>Returns information about the last several generations in the API. Includes things like when, what server, parsing type, how long it took, and what changes had occurred. Optionally the user can specify how many generations back they would like to look.</p>
+<section id="general-generation-information-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Generation Information</span><a href="#general-generation-information-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/geninfo{?size}</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/geninfo
+http://api.bukget.org/3/geninfo?size=10
 </code></pre>
-</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><dt>server<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bukkit</span></span>&nbsp;<p>What server platform to grab plugins for.</p>
-</dd><dd><dt>size<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span>&nbsp;<p>How many documents do you want to return.</p>
-</dd><dd><dt>start<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>5</span></span>&nbsp;<p>From where the query should start.</p>
-</dd><dd><dt>sort<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>plugin_name</span></span>&nbsp;<p>Which field to sort by. Use a - before the field name to perform an inverted sort.</p>
-</dd><dd><dt>fields<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>slug,plugin_name,description</span></span>&nbsp;<p>Which fields the request should return.</p>
-</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#97042" class="pull-right">Toggle</a></li><li id="97042" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>[
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><dt>size<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>How many generations you want info about.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#255802" class="pull-right">Toggle</a></li><li id="255802" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>[
     {
-        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-        "<span class="hljs-attribute">plugin_name</span>": <span class="hljs-value"><span class="hljs-string">"abag"</span></span>,
-        "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"abag"</span>
+        <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1395680823</span>, <span class="hljs-comment">// The current UNIX timestamp that the Generation started at.</span>
+        <span class="hljs-string">"parser"</span>: <span class="hljs-string">"bukkit"</span>, <span class="hljs-comment">// The parser that this generation was run with.</span>
+        <span class="hljs-string">"changes"</span>: [ <span class="hljs-comment">// A list of the changes that had occurred in the API.</span>
+            {
+                <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.0.0"</span>, <span class="hljs-comment">// The version of the plugin that was updated.</span>
+                <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"joincommands"</span> <span class="hljs-comment">// The plugin slug that was updated.</span>
+            },
+            {
+                <span class="hljs-string">"version"</span>: <span class="hljs-string">"0.1"</span>,
+                <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"cakegiver"</span>
+            },
+            {
+                <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.3.1"</span>,
+                <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"emotionz"</span>
+            },
+            {
+                <span class="hljs-string">"version"</span>: <span class="hljs-string">"2.3.1"</span>,
+                <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"minecraftspells"</span>
+            },
+            {
+                <span class="hljs-string">"version"</span>: <span class="hljs-string">"2.9.1"</span>,
+                <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"safewgtool-swgt"</span>
+            },
+            {
+                <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.1.9"</span>,
+                <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"archer"</span>
+            },
+            {
+                <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.1"</span>,
+                <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"plugin-dispenser"</span>
+            }
+        ],
+        <span class="hljs-string">"duration"</span>: <span class="hljs-number">421</span>, <span class="hljs-comment">// The number of seconds it took to complete the generation.</span>
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"speedy"</span>, <span class="hljs-comment">// The type of generation that was run (speedy, full are some examples).</span>
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"53306637a8f070843817cdfb"</span> <span class="hljs-comment">// The ID of the generation.</span>
+    }
+]
+</code></pre></li></ul></section><h4 id="general-specific-generation-information">Specific Generation Information&nbsp;<a href="#general-specific-generation-information"><i class="fa fa-link"></i></a></h4><p>Returns information about a specific generation in the API. Includes things like when, what server, parsing type, how long it took, and what changes had occurred.</p>
+<section id="general-specific-generation-information-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Specific Generation Information</span><a href="#general-specific-generation-information-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/geninfo/{id}</code></div><div class="panel-body"><p>Example:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/geninfo/53306637a8f070843817cdfb
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#912093" class="pull-right">Toggle</a></li><li id="912093" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1395680823</span>, <span class="hljs-comment">// The current UNIX timestamp that the Generation started at.</span>
+    <span class="hljs-string">"parser"</span>: <span class="hljs-string">"bukkit"</span>, <span class="hljs-comment">// The parser that this generation was run with.</span>
+    <span class="hljs-string">"changes"</span>: [ <span class="hljs-comment">// A list of the changes that had occurred in the API.</span>
+        {
+            <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.0.0"</span>, <span class="hljs-comment">// The version of the plugin that was updated.</span>
+            <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"joincommands"</span> <span class="hljs-comment">// The plugin slug that was updated.</span>
+        },
+        {
+            <span class="hljs-string">"version"</span>: <span class="hljs-string">"0.1"</span>,
+            <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"cakegiver"</span>
+        },
+        {
+            <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.3.1"</span>,
+            <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"emotionz"</span>
+        },
+        {
+            <span class="hljs-string">"version"</span>: <span class="hljs-string">"2.3.1"</span>,
+            <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"minecraftspells"</span>
+        },
+        {
+            <span class="hljs-string">"version"</span>: <span class="hljs-string">"2.9.1"</span>,
+            <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"safewgtool-swgt"</span>
+        },
+        {
+            <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.1.9"</span>,
+            <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"archer"</span>
+        },
+        {
+            <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.1"</span>,
+            <span class="hljs-string">"plugin"</span>: <span class="hljs-string">"plugin-dispenser"</span>
+        }
+    ],
+    <span class="hljs-string">"duration"</span>: <span class="hljs-number">421</span>, <span class="hljs-comment">// The number of seconds it took to complete the generation.</span>
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"speedy"</span>, <span class="hljs-comment">// The type of generation that was run (speedy, full are some examples).</span>
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"53306637a8f070843817cdfb"</span> <span class="hljs-comment">// The ID of the generation.</span>
+}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="plugins">Plugins&nbsp;<a href="#plugins"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="plugins-plugin-listing">Plugin Listing&nbsp;<a href="#plugins-plugin-listing"><i class="fa fa-link"></i></a></h4><p>The plugin listing is simply a list of plugins in the API. The information can be represented however the user wishes by modifying the query attributes and pagination directly from the API is also supported. Optionally the information can further be narrowed down based on the server platform the plugins are written for (e.g. bukkit).</p>
+<section id="plugins-plugin-listing-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Plugin Listing</span><a href="#plugins-plugin-listing-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/plugins/{server}{?size,start,fields,sort}</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/plugins
+http://api.bukget.org/3/plugins?size=10
+http://api.bukget.org/3/plugins/bukkit?size=10&amp;start=10
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><dt>server<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bukkit</span></span><p>For what server binary the plugins should be.</p>
+</dd><dd><dt>size<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>How many documents do you want to return.</p>
+</dd><dd><dt>start<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>5</span></span><p>From where the query should start.</p>
+</dd><dd><dt>sort<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>plugin_name</span></span><p>Which field to sort by. Use a - before the field name to perform an inverted sort.</p>
+</dd><dd><dt>fields<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>slug,plugin_name,description</span></span><p>Which fields the request should return.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#110969" class="pull-right">Toggle</a></li><li id="110969" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code><span class="hljs-comment">// For field descriptions, Please see the plugin details entry.</span>
+[
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"abag"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abag"</span>
+    },
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">"Get who used the vehicle as last and who placed it."</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"AbandonedCarts"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abandonedcarts"</span>
+    }
+]
+</code></pre></li></ul></section><h4 id="plugins-plugin-details">Plugin Details&nbsp;<a href="#plugins-plugin-details"><i class="fa fa-link"></i></a></h4><p>The plugin details listing all of the information we know about a given plugin.</p>
+<section id="plugins-plugin-details-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Plugin Details</span><a href="#plugins-plugin-details-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/plugins/{server}/{slug}/{version}{?size,fields}</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/plugins/bukkit/abacus
+http://api.bukget.org/3/plugins/bukkit/abacus?size=1&amp;fields=slug,plugin_name,versions
+http://api.bukget.org/3/plugins/bukkit/abacus/latest
+http://api.bukget.org/3/plugins/bukkit/abacus/0.9.3?size=1&amp;fields=slug,plugin_name,versions
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><span class="required">(required)</span>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bukkit</span></span><p>For what server binary the plugins should be.</p>
+</dd><dd><span class="required">(required)</span>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>abacus</span></span><p>The slug of the plugin you want details for</p>
+</dd><dd><dt>version<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>latest</span></span><p>The specific version that you want, can also be <code>latest</code> for the latest version, or <code>release</code>, <code>beta</code>, <code>alpha</code> for the latest version of that type.</p>
+</dd><dd><dt>size<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>How many versions (if applicable) do you want to return.</p>
+</dd><dd><dt>fields<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>slug,plugin_name,description</span></span><p>Which fields the request should return.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#24915" class="pull-right">Toggle</a></li><li id="24915" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"website"</span>: <span class="hljs-string">"http://dev.bukkit.org/server-mods/abacus/"</span>, <span class="hljs-regexp">//</span> The web-site <span class="hljs-keyword">of</span> the plugin
+    <span class="hljs-string">"dbo_page"</span>: <span class="hljs-string">"http://dev.bukkit.org/server-mods/abacus"</span>, <span class="hljs-regexp">//</span> The BukkitDev URL <span class="hljs-keyword">for</span> <span class="hljs-keyword">this</span> plugin (Bukkit Only).
+    <span class="hljs-string">"description"</span>: <span class="hljs-string">"Offers ability to perform calculations while in Minecraft"</span>, <span class="hljs-regexp">//</span> A short description <span class="hljs-keyword">of</span> the plugin.
+    <span class="hljs-string">"logo_full"</span>: <span class="hljs-string">""</span>, <span class="hljs-regexp">//</span> The full-size logo from the plugin’s BukkitDev page (Bukkit Only).
+    <span class="hljs-string">"versions"</span>: [ <span class="hljs-regexp">//</span> A list <span class="hljs-keyword">of</span> version objects.
+        {
+            <span class="hljs-string">"status"</span>: <span class="hljs-string">"Semi-normal"</span>, <span class="hljs-regexp">//</span> The BukkitDev version status (Bukkit Only).
+            <span class="hljs-string">"commands"</span>: [ <span class="hljs-regexp">//</span> List <span class="hljs-keyword">of</span> command objects detailing what commands <span class="hljs-keyword">this</span> plugins has (<span class="hljs-keyword">if</span> parsable).
+                {
+                    <span class="hljs-string">"usage"</span>: <span class="hljs-string">""</span>, <span class="hljs-regexp">//</span> Usage Description to be displayed to the user.
+                    <span class="hljs-string">"aliases"</span>: [], <span class="hljs-regexp">//</span> List <span class="hljs-keyword">of</span> aliases <span class="hljs-keyword">for</span> <span class="hljs-keyword">this</span> command.
+                    <span class="hljs-string">"command"</span>: <span class="hljs-string">"abacus"</span>, <span class="hljs-regexp">//</span> The command name.
+                    <span class="hljs-string">"permission-message"</span>: <span class="hljs-string">"§cYou do not have access to that command."</span>, <span class="hljs-regexp">//</span> The message displayed <span class="hljs-keyword">if</span> a user tried to run the command without permissions to.
+                    <span class="hljs-string">"permission"</span>: <span class="hljs-string">"abacus.abacus"</span> <span class="hljs-regexp">//</span> The permission <span class="hljs-keyword">this</span> command relies <span class="hljs-literal">on</span>.
+                }
+            ],
+            <span class="hljs-string">"changelog"</span>: <span class="hljs-string">"LONG STRING OF STUFF!!!!!"</span>, <span class="hljs-regexp">//</span> Base64 Encoded string <span class="hljs-keyword">of</span> the version changelog.
+            <span class="hljs-string">"game_versions"</span>: [ <span class="hljs-regexp">//</span> List <span class="hljs-keyword">of</span> server versions that <span class="hljs-keyword">this</span> specific plug-<span class="hljs-keyword">in</span> version supports.
+                <span class="hljs-string">"CB 1.4.5-R0.2"</span>
+            ],
+            <span class="hljs-string">"filename"</span>: <span class="hljs-string">"Abacus.jar"</span>, <span class="hljs-regexp">//</span> Version download filename.
+            <span class="hljs-string">"hard_dependencies"</span>: [], <span class="hljs-regexp">//</span> List <span class="hljs-keyword">of</span> plugins that are required <span class="hljs-keyword">for</span> <span class="hljs-keyword">this</span> plugin to run.
+            <span class="hljs-string">"date"</span>: <span class="hljs-number">1353964798</span>, <span class="hljs-regexp">//</span> Date Released
+            <span class="hljs-string">"version"</span>: <span class="hljs-string">"0.9.3"</span>, <span class="hljs-regexp">//</span> The version number.
+            <span class="hljs-string">"link"</span>: <span class="hljs-string">"http://dev.bukkit.org/server-mods/abacus/files/4-abacus-v0-9-2-cb-1-4-5-r0-2-compatible-w-1-3-2/"</span>, <span class="hljs-regexp">//</span> URL <span class="hljs-keyword">for</span> version specific page.
+            <span class="hljs-string">"download"</span>: <span class="hljs-string">"http://dev.bukkit.org/media/files/650/288/Abacus.jar"</span>, <span class="hljs-regexp">//</span> The download URL <span class="hljs-keyword">for</span> <span class="hljs-keyword">this</span> version.
+            <span class="hljs-string">"md5"</span>: <span class="hljs-string">"1e1b6b6e131c617248f98c53bf650874"</span>, <span class="hljs-regexp">//</span> The MD5Sum <span class="hljs-keyword">of</span> the version download.
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"Beta"</span>, <span class="hljs-regexp">//</span> The version type. 
+            <span class="hljs-string">"slug"</span>: <span class="hljs-string">"4-abacus-v0-9-2-cb-1-4-5-r0-2-compatible-w-1-3-2"</span>, <span class="hljs-regexp">//</span> The canonical name <span class="hljs-keyword">of</span> <span class="hljs-keyword">this</span> version (example, BukkitDev version slug). This <span class="hljs-keyword">is</span> exclusive to a plugin <span class="hljs-keyword">and</span> cannot be changed.
+            <span class="hljs-string">"soft_dependencies"</span>: [], <span class="hljs-regexp">//</span> List <span class="hljs-keyword">of</span> plugins that <span class="hljs-keyword">this</span> plugins can optionally depend <span class="hljs-literal">on</span>.
+            <span class="hljs-string">"permissions"</span>: [ <span class="hljs-regexp">//</span> List <span class="hljs-keyword">of</span> permission dictionaries details what permissions <span class="hljs-keyword">this</span> plugin has (<span class="hljs-keyword">if</span> parseable).
+                {
+                    <span class="hljs-string">"default"</span>: <span class="hljs-string">"op"</span>, <span class="hljs-regexp">//</span> Default permission <span class="hljs-keyword">for</span> <span class="hljs-keyword">this</span> role. Example, <span class="hljs-keyword">in</span> Bukkit, there are <span class="hljs-number">4</span> possibilities (“op”, “<span class="hljs-keyword">not</span> op”, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>).
+                    <span class="hljs-string">"role"</span>: <span class="hljs-string">"abacus.*"</span> <span class="hljs-regexp">//</span> Role name.
+                },
+                {
+                    <span class="hljs-string">"default"</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-string">"role"</span>: <span class="hljs-string">"abacus.abacus"</span>
+                }
+            ]
+        },
+
+    ],
+    <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"Abacus"</span>, <span class="hljs-regexp">//</span> The name <span class="hljs-keyword">of</span> the plugin. This <span class="hljs-keyword">is</span> non-exclusive <span class="hljs-keyword">and</span> multiple plugins could have the same name.
+    <span class="hljs-string">"popularity"</span>: {
+        <span class="hljs-string">"monthly"</span>: <span class="hljs-number">133</span>, <span class="hljs-regexp">//</span> The popularity score over the last <span class="hljs-number">30</span> days.
+        <span class="hljs-string">"daily"</span>: <span class="hljs-number">994</span>, <span class="hljs-regexp">//</span> The most current popularity score <span class="hljs-keyword">of</span> the plugin.
+        <span class="hljs-string">"weekly"</span>: <span class="hljs-number">238</span>, <span class="hljs-regexp">//</span> The popularity score over the last <span class="hljs-number">7</span> days.
+        <span class="hljs-string">"total"</span>: <span class="hljs-number">1500</span>, <span class="hljs-regexp">//</span> The popularity score since the API added the plugin.
+    },
+    <span class="hljs-string">"server"</span>: <span class="hljs-string">"bukkit"</span>, <span class="hljs-regexp">//</span> The server binary that <span class="hljs-keyword">this</span> plugin <span class="hljs-keyword">is</span> compatible <span class="hljs-reserved">with</span>. For example, ‘bukkit’ would denote a bukkit plugin.
+    <span class="hljs-string">"main"</span>: <span class="hljs-string">"org.ruhlendavis.mc.abacus.Abacus"</span>, <span class="hljs-regexp">//</span> This <span class="hljs-keyword">is</span> the main field <span class="hljs-keyword">in</span> the plugin.yml. Bukkit uses <span class="hljs-keyword">this</span> to identify the plugin internally. This <span class="hljs-keyword">is</span> usually the main <span class="hljs-class"><span class="hljs-keyword">class</span>.</span>
+    <span class="hljs-string">"authors"</span>: [ <span class="hljs-regexp">//</span> List <span class="hljs-keyword">of</span> authors that wrote <span class="hljs-keyword">this</span> plug-<span class="hljs-keyword">in</span>.
+        <span class="hljs-string">"Feaelin {iain@ruhlendavis.org}"</span>
+    ],
+    <span class="hljs-string">"logo"</span>: <span class="hljs-string">""</span>, <span class="hljs-regexp">//</span> A thumb-nailed version <span class="hljs-keyword">of</span> the logo from the plugin’s BukkitDev page (Bukkit Only).
+    <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abacus"</span>, <span class="hljs-regexp">//</span> The canonical name (example, BukkitDev slug name). This name <span class="hljs-keyword">is</span> exclusive <span class="hljs-keyword">and</span> cannot be changed.
+    <span class="hljs-string">"categories"</span>: [ <span class="hljs-regexp">//</span> List <span class="hljs-keyword">of</span> categories that <span class="hljs-keyword">this</span> plugin falls under.
+        <span class="hljs-string">"Informational"</span>
+    ],
+    <span class="hljs-string">"stage"</span>: <span class="hljs-string">"Beta"</span> <span class="hljs-regexp">//</span> What BukkitDev stage the plugin <span class="hljs-keyword">is</span> <span class="hljs-keyword">in</span>.
+}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>404</code></strong><a data-toggle="collapse" data-target="#722969" class="pull-right">Toggle</a></li><li id="722969" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">error</span>": <span class="hljs-value"><span class="hljs-string">"Plugin Does Not Exist"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="plugins-plugin-download">Plugin Download&nbsp;<a href="#plugins-plugin-download"><i class="fa fa-link"></i></a></h4><p>This URL is a convenience function to redirect to the download page of the plugin version specified. Optionally the latest version can always be selected by using the “latest” word in place of a specific version.</p>
+<section id="plugins-plugin-download-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Plugin Download</span><a href="#plugins-plugin-download-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/plugins/{server}/{slug}/{version}/download</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/plugins/bukkit/abacus/latest/download
+http://api.bukget.org/3/plugins/bukkit/abacus/0.9.3/download
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><span class="required">(required)</span>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bukkit</span></span><p>For what server binary the plugins should be.</p>
+</dd><dd><span class="required">(required)</span>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>abacus</span></span><p>The slug of the plugin you want details for</p>
+</dd><dd><span class="required">(required)</span>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>latest</span></span><p>The specific version that you want, can also be <code>latest</code> for the latest version, or <code>release</code>, <code>beta</code>, <code>alpha</code> for the latest version of that type.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#553773" class="pull-right">Toggle</a></li><li id="553773" class="list-group-item collapse"><h5>Body</h5><pre><code><span class="hljs-label">http:</span>//dev<span class="hljs-preprocessor">.bukkit</span><span class="hljs-preprocessor">.org</span>/media/files/<span class="hljs-number">650</span>/<span class="hljs-number">288</span>/Abacus<span class="hljs-preprocessor">.jar</span>
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>404</code></strong><a data-toggle="collapse" data-target="#591856" class="pull-right">Toggle</a></li><li id="591856" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">error</span>": <span class="hljs-value"><span class="hljs-string">"could not find version"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="categories">Categories&nbsp;<a href="#categories"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="categories-category-listing">Category Listing&nbsp;<a href="#categories-category-listing"><i class="fa fa-link"></i></a></h4><pre><code>A <span class="hljs-type">list</span> <span class="hljs-keyword">of</span> categories <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> database <span class="hljs-keyword">and</span> <span class="hljs-keyword">the</span> <span class="hljs-type">number</span> <span class="hljs-keyword">of</span> plugins <span class="hljs-keyword">that</span> each category has.
+</code></pre><section id="categories-category-listing-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Category Listing</span><a href="#categories-category-listing-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/categories</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/categories
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#907268" class="pull-right">Toggle</a></li><li id="907268" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>[
+    {
+        <span class="hljs-string">"count"</span>: <span class="hljs-number">2732</span>, <span class="hljs-regexp">//</span> Number <span class="hljs-keyword">of</span> plugins <span class="hljs-keyword">in</span> <span class="hljs-keyword">this</span> category.
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"Admin Tools"</span> <span class="hljs-regexp">//</span> Category name.
+    },
+    {
+        <span class="hljs-string">"count"</span>: <span class="hljs-number">786</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"Anti-Griefing Tools"</span>
+    },
+    {
+        <span class="hljs-string">"count"</span>: <span class="hljs-number">979</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"Chat Related"</span>
+    },
+]
+</code></pre></li></ul></section><h4 id="categories-category-plugin-listing">Category Plugin Listing&nbsp;<a href="#categories-category-plugin-listing"><i class="fa fa-link"></i></a></h4><p>A plugin listing based on the category referenced. Behaves the same as the main plugin listing. Optionally you can restrict the view based on the server binary compatibility.</p>
+<section id="categories-category-plugin-listing-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Category Plugin Listing</span><a href="#categories-category-plugin-listing-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/categories/{server}/{category}{?size,start,fields,sort}</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/categories/Anti-Griefing%20Tools
+http://api.bukget.org/3/categories/Anti-Griefing%20Tools?size=20
+http://api.bukget.org/3/categories/bukkit/Anti-Griefing%20Tools?size=20
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><dt>server<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bukkit</span></span><p>For what server binary the plugins should be.</p>
+</dd><dd><span class="required">(required)</span>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bukkit</span></span><p>The name of the category.</p>
+</dd><dd><dt>size<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>How many documents do you want to return.</p>
+</dd><dd><dt>start<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>5</span></span><p>From where the query should start.</p>
+</dd><dd><dt>sort<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>plugin_name</span></span><p>Which field to sort by. Use a - before the field name to perform an inverted sort.</p>
+</dd><dd><dt>fields<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>slug,plugin_name,description</span></span><p>Which fields the request should return.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#817463" class="pull-right">Toggle</a></li><li id="817463" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code><span class="hljs-comment">// For field descriptions, Please see the plugin details entry.</span>
+[
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"abag"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abag"</span>
+    },
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">"Get who used the vehicle as last and who placed it."</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"AbandonedCarts"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abandonedcarts"</span>
+    }
+]
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="authors">Authors&nbsp;<a href="#authors"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="authors-author-listing">Author Listing&nbsp;<a href="#authors-author-listing"><i class="fa fa-link"></i></a></h4><p>A list of plugin authors in the database and the number of plugins that each author has worked on.</p>
+<section id="authors-author-listing-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Author Listing</span><a href="#authors-author-listing-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/authors</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/authors
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#724095" class="pull-right">Toggle</a></li><li id="724095" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>[
+    {
+        <span class="hljs-string">"count"</span>: <span class="hljs-number">1</span>, <span class="hljs-regexp">//</span> Number <span class="hljs-keyword">of</span> plugins <span class="hljs-keyword">in</span> <span class="hljs-keyword">this</span> category.
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"0xfffc69"</span> <span class="hljs-regexp">//</span> Author name.
+    },
+    {
+        <span class="hljs-string">"count"</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"14nicholasse"</span>
+    },
+    {
+        <span class="hljs-string">"count"</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"15kingben"</span>
+    },
+]
+</code></pre></li></ul></section><h4 id="authors-author-plugin-listing">Author Plugin Listing&nbsp;<a href="#authors-author-plugin-listing"><i class="fa fa-link"></i></a></h4><p>A plugin listing based on the author referenced. Behaves the same as the main plugin listing. Optionally you can restrict the view based on the server binary compatibility.</p>
+<section id="authors-author-plugin-listing-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Author Plugin Listing</span><a href="#authors-author-plugin-listing-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/authors/{server}/{author}{?size,start,fields,sort}</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/authors/iAlexak
+http://api.bukget.org/3/authors/iAlexak?size=1
+http://api.bukget.org/3/authors/bukkit/iAlexak?size=1
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><dt>server<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bukkit</span></span><p>For what server binary the plugins should be.</p>
+</dd><dd><span class="required">(required)</span>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bukkit</span></span><p>The name of the author.</p>
+</dd><dd><dt>size<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>How many documents do you want to return.</p>
+</dd><dd><dt>start<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>5</span></span><p>From where the query should start.</p>
+</dd><dd><dt>sort<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>plugin_name</span></span><p>Which field to sort by. Use a - before the field name to perform an inverted sort.</p>
+</dd><dd><dt>fields<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>slug,plugin_name,description</span></span><p>Which fields the request should return.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#756238" class="pull-right">Toggle</a></li><li id="756238" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code><span class="hljs-comment">// For field descriptions, Please see the plugin details entry.</span>
+[
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"abag"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abag"</span>
+    },
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">"Get who used the vehicle as last and who placed it."</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"AbandonedCarts"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abandonedcarts"</span>
+    }
+]
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="search">Search&nbsp;<a href="#search"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="search-plugin-search">Plugin Search&nbsp;<a href="#search-plugin-search"><i class="fa fa-link"></i></a></h4><p>A generalized search function to allow users to look for specific content. Any field can be used for searching as long as you use dot notation to tell the engine where to look.</p>
+<p>Valid actions:</p>
+<ul>
+<li><em>equals:</em> Field equals value.</li>
+<li><em>not-equals:</em> Field is not Equal to value.</li>
+<li><em>less:</em> Field is less than value.</li>
+<li><em>less-equal:</em> Field is less than or equal to value.</li>
+<li><em>more:</em> Field is greater than value.</li>
+<li><em>more-equal:</em> Field is greater than or equal to value.</li>
+<li><em>like:</em> Field is like (partial match) to value.</li>
+</ul>
+<section id="search-plugin-search-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Plugin Search</span><a href="#search-plugin-search-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/3/search/{field}/{action}/{value}{?size,start,fields,sort}</code></div><div class="panel-body"><p>Examples:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/3/search/slug/like/world
+http://api.bukget.org/3/search/slug/like/world?size=10
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><dt>size<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>How many documents do you want to return.</p>
+</dd><dd><dt>start<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>5</span></span><p>From where the query should start.</p>
+</dd><dd><dt>sort<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>plugin_name</span></span><p>Which field to sort by. Use a - before the field name to perform an inverted sort.</p>
+</dd><dd><dt>fields<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>slug,plugin_name,description</span></span><p>Which fields the request should return.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#334685" class="pull-right">Toggle</a></li><li id="334685" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code><span class="hljs-comment">// For field descriptions, Please see the plugin details entry.</span>
+[
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"abag"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abag"</span>
+    },
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">"Get who used the vehicle as last and who placed it."</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"AbandonedCarts"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abandonedcarts"</span>
+    }
+]
+</code></pre></li></ul></section><h4 id="search-post-plugin-search">POST Plugin Search&nbsp;<a href="#search-post-plugin-search"><i class="fa fa-link"></i></a></h4><p>A generalized search function to allow users to look for specific content. Any field can be used for searching as long as you use dot notation to tell the engine where to look.</p>
+<p>Valid actions:</p>
+<ul>
+<li><em>equals:</em> Field equals value.</li>
+<li><em>not-equals:</em> Field is not Equal to value.</li>
+<li><em>less:</em> Field is less than value.</li>
+<li><em>less-equal:</em> Field is less than or equal to value.</li>
+<li><em>more:</em> Field is greater than value.</li>
+<li><em>more-equal:</em> Field is greater than or equal to value.</li>
+<li><em>like:</em> Field is like (partial match) to value.</li>
+<li><em>in:</em> Field is in the list of of values provided.</li>
+<li><em>not in:</em> Field is not in the list of values provided.</li>
+<li><em>all:</em> Field contains all of the values in the list provided.</li>
+<li><em>exists:</em> Field exists.</li>
+<li><em>and:</em> All values in list provided are matching. See example below.</li>
+<li><em>or:</em> Some values in the list of objects provided are matching. See example below.</li>
+<li><em>nor:</em> No values in the list of objects provided are matching. See example below.</li>
+<li><em>not:</em> Performs a logical NOT operation on the specified expressions. See example below.</li>
+</ul>
+<p>Filters examples:</p>
+<pre><code>[
+    {
+        "<span class="hljs-attribute">field</span>": <span class="hljs-value"><span class="hljs-string">"plugin_name"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-string">"like"</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"mc"</span>
     </span>},
     {
-        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Get who used the vehicle as last and who placed it."</span></span>,
-        "<span class="hljs-attribute">plugin_name</span>": <span class="hljs-value"><span class="hljs-string">"AbandonedCarts"</span></span>,
-        "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"abandonedcarts"</span>
+        "<span class="hljs-attribute">field</span>": <span class="hljs-value"><span class="hljs-string">"versions.game_version"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-string">"like"</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1.4.5"</span>
     </span>}
 ]
-</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated on 23 Mar 2014</p><script src="//code.jquery.com/jquery-1.10.1.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script src="js/status.js"></script><script type="text/javascript">
+</code></pre><p><code>AND</code> example:</p>
+<pre><code>[
+    {
+        "<span class="hljs-attribute">field</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-string">"and"</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">stage</span>": <span class="hljs-value"><span class="hljs-string">"Release"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"abitofrealism"</span>
+            </span>}
+        ]
+    </span>}
+]
+</code></pre><p><code>OR</code> example:</p>
+<pre><code>[
+    {
+        "<span class="hljs-attribute">field</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-string">"or"</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"abitofrealism"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"clearthechat"</span>
+            </span>}
+        ]
+    </span>}
+]
+</code></pre><p><code>NOR</code> example:</p>
+<pre><code>[
+    {
+        "<span class="hljs-attribute">field</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-string">"nor"</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"abitofrealism"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"clearthechat"</span>
+            </span>}
+        ]
+    </span>}
+]
+</code></pre><p><code>NOT</code> example:</p>
+<pre><code>{
+    <span class="hljs-string">"field"</span>: <span class="hljs-string">"curse_id"</span>,
+    <span class="hljs-string">"action"</span>: <span class="hljs-string">"not"</span>,
+    <span class="hljs-string">"value"</span>: { 
+        <span class="hljs-string">"$lt"</span>: <span class="hljs-number">48244</span> // Usually <span class="hljs-operator">less</span> than <span class="hljs-number">48244</span>, now where it's not <span class="hljs-operator">less</span> than <span class="hljs-number">48244</span>
+    }
+}
+</code></pre><section id="search-post-plugin-search-post" class="panel panel-success"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">POST Plugin Search</span><a href="#search-post-plugin-search-post" class="btn btn-xs btn-success">POST</a>&nbsp;<code>/3/search</code></div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><span class="required">(required)</span>&nbsp;<code>String</code>&nbsp;<p>JSON encoded, refer to the example format for the filters field above.</p>
+</dd><dd><dt>size<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>How many documents do you want to return.</p>
+</dd><dd><dt>start<span>optional</span></dt>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>5</span></span><p>From where the query should start.</p>
+</dd><dd><dt>sort<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>plugin_name</span></span><p>Which field to sort by. Use a - before the field name to perform an inverted sort.</p>
+</dd><dd><dt>fields<span>optional</span></dt>&nbsp;<code>String</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>slug,plugin_name,description</span></span><p>Which fields the request should return.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#195340" class="pull-right">Toggle</a></li><li id="195340" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code><span class="hljs-comment">// For field descriptions, Please see the plugin details entry.</span>
+[
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"abag"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abag"</span>
+    },
+    {
+        <span class="hljs-string">"description"</span>: <span class="hljs-string">"Get who used the vehicle as last and who placed it."</span>,
+        <span class="hljs-string">"plugin_name"</span>: <span class="hljs-string">"AbandonedCarts"</span>,
+        <span class="hljs-string">"slug"</span>: <span class="hljs-string">"abandonedcarts"</span>
+    }
+]
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="statistics">Statistics&nbsp;<a href="#statistics"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="statistics-invalid-versions-list">Invalid versions list&nbsp;<a href="#statistics-invalid-versions-list"><i class="fa fa-link"></i></a></h4><p>The invalid version list is a list of plugins that have had to be switched over to using the BukkitDev versioning instead of the plugin.yml versioning. This happens when it is detected that there are 3 or more plugins with only 1 unique version between them (e.g. All of the plugin versions are considered v0.1 in the plugin.yml). This generally indicates that the plugin developer hasn’t been updating their plugin.yml to reflect new versions of their code and you should not trust the versioning indicated by the server for these plugins.</p>
+<section id="statistics-invalid-versions-list-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Invalid versions list</span><a href="#statistics-invalid-versions-list-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/stats/naughty_list</code></div><div class="panel-body"><p>Example:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/stats/naughty_list
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#481023" class="pull-right">Toggle</a></li><li id="481023" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>[
+    {
+        "<span class="hljs-attribute">plugin_name</span>": <span class="hljs-value"><span class="hljs-string">"ClearTheChat"</span></span>,
+        "<span class="hljs-attribute">authors</span>": <span class="hljs-value">[
+            <span class="hljs-string">"FlavourFlave"</span>
+        ]</span>,
+        "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"youclearthechat"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">plugin_name</span>": <span class="hljs-value"><span class="hljs-string">"Improved Jail"</span></span>,
+        "<span class="hljs-attribute">authors</span>": <span class="hljs-value">[
+            <span class="hljs-string">"UntoldAdventures"</span>
+        ]</span>,
+        "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"improvedjail"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">plugin_name</span>": <span class="hljs-value"><span class="hljs-string">"EasySave"</span></span>,
+        "<span class="hljs-attribute">authors</span>": <span class="hljs-value">[
+            <span class="hljs-string">"kamakarzy"</span>
+        ]</span>,
+        "<span class="hljs-attribute">slug</span>": <span class="hljs-value"><span class="hljs-string">"easysave"</span>
+    </span>}
+]
+</code></pre></li></ul></section><h4 id="statistics-current-statistics">Current statistics&nbsp;<a href="#statistics-current-statistics"><i class="fa fa-link"></i></a></h4><p>Returns amount of plugins and versions that is currently available in the API.</p>
+<section id="statistics-current-statistics-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Current statistics</span><a href="#statistics-current-statistics-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/stats/todays_trends</code></div><div class="panel-body"><p>Example:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/stats/todays_trends
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#680862" class="pull-right">Toggle</a></li><li id="680862" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">plugin_count</span>": <span class="hljs-value"><span class="hljs-number">14633</span></span>,
+    "<span class="hljs-attribute">version_count</span>": <span class="hljs-value"><span class="hljs-number">69861</span>
+</span>}
+</code></pre></li></ul></section><h4 id="statistics-trends">Trends&nbsp;<a href="#statistics-trends"><i class="fa fa-link"></i></a></h4><p>Returns traffic info about the API.</p>
+<section id="statistics-trends-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Trends</span><a href="#statistics-trends-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/stats/trend/{days}</code></div><div class="panel-body"><p>Example:</p>
+<pre><code class="lang-no-highlight">http://api.bukget.org/stats/trend/10
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dd><span class="required">(required)</span>&nbsp;<code>Integer</code>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>5</span></span><p>How many days of trends that should be returned</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#987699" class="pull-right">Toggle</a></li><li id="987699" class="list-group-item collapse"><div class="description"></div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br/></code></pre><h5>Body</h5><pre><code>[
+    {
+        "<span class="hljs-attribute">bukkitdev</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">unique</span>": <span class="hljs-value"><span class="hljs-number">10792</span></span>,
+        "<span class="hljs-attribute">api1</span>": <span class="hljs-value"><span class="hljs-number">10748</span></span>,
+        "<span class="hljs-attribute">api2</span>": <span class="hljs-value"><span class="hljs-number">103526</span></span>,
+        "<span class="hljs-attribute">api3</span>": <span class="hljs-value"><span class="hljs-number">405927</span></span>,
+        "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-number">1395658808</span></span>,
+        "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">584393</span></span>,
+        "<span class="hljs-attribute">user_agents</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">restler</span>": <span class="hljs-value"><span class="hljs-number">661</span></span>,
+            "<span class="hljs-attribute">python-requests</span>": <span class="hljs-value"><span class="hljs-number">52</span></span>,
+            "<span class="hljs-attribute">appengine-google;</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">mcma2</span>": <span class="hljs-value"><span class="hljs-number">19703</span></span>,
+            "<span class="hljs-attribute">tcadmin</span>": <span class="hljs-value"><span class="hljs-number">954</span></span>,
+            "<span class="hljs-attribute">global7hosting</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+            "<span class="hljs-attribute">bertware</span>": <span class="hljs-value"><span class="hljs-number">26925</span></span>,
+            "<span class="hljs-attribute">adminium</span>": <span class="hljs-value"><span class="hljs-number">168</span></span>,
+            "<span class="hljs-attribute">clanslots</span>": <span class="hljs-value"><span class="hljs-number">37</span></span>,
+            "<span class="hljs-attribute">pluginupdater</span>": <span class="hljs-value"><span class="hljs-number">493</span></span>,
+            "<span class="hljs-attribute">httpclient</span>": <span class="hljs-value"><span class="hljs-number">33</span>
+        </span>}
+    </span>},
+    {
+        "<span class="hljs-attribute">bukkitdev</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">unique</span>": <span class="hljs-value"><span class="hljs-number">12230</span></span>,
+        "<span class="hljs-attribute">api1</span>": <span class="hljs-value"><span class="hljs-number">12142</span></span>,
+        "<span class="hljs-attribute">api2</span>": <span class="hljs-value"><span class="hljs-number">116384</span></span>,
+        "<span class="hljs-attribute">api3</span>": <span class="hljs-value"><span class="hljs-number">442621</span></span>,
+        "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-number">1395572409</span></span>,
+        "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">646741</span></span>,
+        "<span class="hljs-attribute">user_agents</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">python-requests</span>": <span class="hljs-value"><span class="hljs-number">84</span></span>,
+            "<span class="hljs-attribute">mcma2</span>": <span class="hljs-value"><span class="hljs-number">24268</span></span>,
+            "<span class="hljs-attribute">tcadmin</span>": <span class="hljs-value"><span class="hljs-number">703</span></span>,
+            "<span class="hljs-attribute">global7hosting</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+            "<span class="hljs-attribute">bertware</span>": <span class="hljs-value"><span class="hljs-number">31411</span></span>,
+            "<span class="hljs-attribute">adminium</span>": <span class="hljs-value"><span class="hljs-number">71</span></span>,
+            "<span class="hljs-attribute">clanslots</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">pluginupdater</span>": <span class="hljs-value"><span class="hljs-number">362</span>
+        </span>}
+    </span>}
+]
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated on 25 Mar 2014</p><script src="//code.jquery.com/jquery-1.10.1.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script src="js/status.js"></script><script type="text/javascript">
  Status.check();
 </script><script>(function() {
   if (location.protocol === 'file:') {
