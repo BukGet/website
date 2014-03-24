@@ -301,6 +301,8 @@ header nav .links a.active {
   text-align: center;
 
   color: #888;
+
+  margin-bottom: 20px;
 }
 
 .status .block:hover:after {

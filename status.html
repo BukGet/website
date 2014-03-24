@@ -76,9 +76,9 @@ title: Status
       <div class="template" data-template="block">
         <span class="block" title="Plugin Listing"></span>
       </div>
-
-      <div class="chart">
-        Charts will go here.
+      <div class="chart" id="requests">
+      </div>
+      <div class="chart" id="useragents">
       </div>
     </div>
   </div>
@@ -86,4 +86,5 @@ title: Status
 
 <script type="text/javascript">
   Status.checkAll();
+  Status.drawGraphs();
 </script>

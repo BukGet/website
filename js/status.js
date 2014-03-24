@@ -72,3 +72,165 @@ Status.checkAll = function () {
     }
   }); 
 };
+
+var formatter = function() {
+  var s = '<span style="font-size: 10px">'+ Highcharts.dateFormat('%A, %b %e, %H:%M', this.x) +'</span><br/>';
+
+  var sortedPoints = this.points.sort(function(a, b){
+    return ((a.y > b.y) ? -1 : ((a.y < b.y) ? 1 : 0));
+  });
+  $.each(sortedPoints , function(i, point) {
+    s += '<span style="color:' + point.series.color + '">' + point.series.name + '</span>: <b>' + Highcharts.numberFormat(point.y, -1) +'</b><br/>';
+  });
+
+  return s;
+}
+
+Status.drawGraphs = function () {
+  $.getJSON('http://api.bukget.org/stats/trend/30', function(data){
+    var dset = [{name: 'api1', data: []},
+      {name: 'api2', data: []},
+      {name: 'api3', data: []},
+      {name: 'total', data: []}];
+    var uadata = [{name: 'Other', data: []}];
+    var uamax = 0;
+    $.each(data, function(key, item){
+      for (var i = 0; i < dset.length; i++){
+        dset[i]["data"].push([item["timestamp"] * 1000, item[dset[i].name]]);
+      };
+      if ("user_agents" in item){
+          var total = 0;
+          $.each(item["user_agents"], function(ua, value){
+              var in_ua = false;
+              var idex = null;
+              for (var i = 0; i < uadata.length; i++){
+                  if (uadata[i].name == ua) {
+                      in_ua = true;
+                      idex = i;
+                  };
+              };
+              if (!in_ua & value > 10) {
+                in_ua = true;
+                uadata.push({ name: ua, data: []});
+                idex = uadata.length - 1;
+              }
+              if (in_ua) {
+                uadata[idex].data.push([item["timestamp"] * 1000, value]);
+              }
+              total += value;
+              if (value > uamax) { 
+                uamax = value;
+              }
+          });
+          uadata[0].data.push([item["timestamp"] * 1000, (item['total'] - total)]);
+      };
+    });
+    for (var i = 0; i < dset.length; i++){
+      dset[i]["data"].reverse();
+    }
+    for (var i = 0; i < uadata.length; i++){
+      uadata[i]["data"].reverse();
+    }
+    $('#requests').highcharts({
+      chart: {
+        type: 'line',
+        zoomType: 'x',
+        spacingRight: 20
+      },
+      colors: [
+         '#2f7ed8', 
+         '#8bbc21', 
+         '#c42525', 
+         '#f28f43'
+      ], 
+      plotOptions: {
+            series: {
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+      },
+      title: {
+        text: 'Requests per day'
+      },
+      xAxis: {
+        type: 'datetime',
+        title: {
+            text: null
+        }
+      },
+      tooltip: {
+        shared: true,
+        followPointer: true,
+        formatter: formatter
+      },
+      legend: {
+        enabled: false
+      },
+      yAxis: {
+        title: {
+            text: null
+        },
+        min: 0
+      },
+      series: dset,
+      credits: {
+        enabled: false
+      },
+    });
+    $('#useragents').highcharts({
+      chart: {
+        type: 'line',
+        zoomType: 'x',
+        spacingRight: 20
+      },
+      plotOptions: {
+            series: {
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+      },
+      title: {
+        text: 'Requests per user-agent per day'
+      },
+      xAxis: {
+        type: 'datetime',
+        title: {
+            text: null
+        }
+      },
+      tooltip: {
+        shared: true,
+        followPointer: true,
+        formatter: formatter
+      },
+      legend: {
+        enabled: false
+      },
+      yAxis: {
+        title: {
+            text: null
+        },
+        min: 0,
+        max: (uamax + uamax * 0.1)
+      },
+      series: uadata,
+      credits: {
+        enabled: false
+      },
+    });
+  });
+}
