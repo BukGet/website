@@ -73,7 +73,7 @@ a.list-group-item.heading {
   display: none;
 }
 #nav {
-  margin-top: 100px;
+  margin-top: 0px;
   min-width: 228px;
   top: 0;
   bottom: 0;
