@@ -1,7 +1,7 @@
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 @import url(http://fonts.googleapis.com/css?family=Exo:300,400,500,600,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Signika:400,300,600,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,300italic,400italic,300,100,100italic);
 
-/* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
 }
@@ -20,7 +20,7 @@ body {
 * {
   box-sizing: box-model;
   -webkit-font-smoothing: antialiased;
-  -font-rendering: optimizeLegability;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -37,7 +37,7 @@ h1,h2,h3,h4,h5,h6 {
   padding: 0;
 }
 
-header {
+body > header {
   background: white;
   color: black;
   position: fixed;
@@ -51,50 +51,49 @@ header.shadow {
   box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
-header .header-inner {
+body > header .header-inner {
   padding: 10px 0;
 }
 
-header .header-inner a {
+body > header .header-inner a {
   text-decoration: none;
 }
 
-header .header-inner,
+body > header .header-inner,
 .page .page-inner {
   width: 960px;
   margin: 0px auto;
   position: relative;
 }
 
-header nav {
+body > header nav {
   position: relative;
 }
 
-header nav .logo {
+body > header nav .logo {
   font-weight: 16px;
   line-height: 50px;
   color: black;
 }
 
-header nav .logo .entypo-bucket {
+body > header nav .logo .entypo-bucket {
   font-size: 28px;
 }
 
-header nav .logo h1 {
+body > header nav .logo h1 {
   display: inline-block;
   font-size: 36px;
-  font-family: 'Signika' !important;
-  font-weight: 300;
+  font-weight: 600;
   margin: 0;
   padding: 0;
 }
 
-header nav .logo h1 strong {
-  font-weight: 400;
+body > header nav .logo h1 strong {
+  font-weight: 600;
   color: #ff6600;
 }
 
-header nav .links {
+body > header nav .links {
   display: inline-block;
   position: absolute;
   right: 0;
@@ -103,7 +102,7 @@ header nav .links {
   text-decoration: none;
 }
 
-header nav .links a {
+body > header nav .links a {
   margin-left: 20px;
   color: #777;
   font-size: 12px;
@@ -113,7 +112,7 @@ header nav .links a {
   letter-spacing: 0px;
 }
 
-header nav .links a .radial {
+body > header nav .links a .radial {
   display: inline-block;
   width: 9px;
   height: 9px;
@@ -122,15 +121,15 @@ header nav .links a .radial {
   background: #6cc425;
 }
 
-header nav .links a.donate {
+body > header nav .links a.donate {
   color: #ff6600;
   border: 2px solid #ff6600;
   padding: 5px 10px;
   border-radius: 2px;
 }
 
-header nav .links a:hover,
-header nav .links a.active {
+body > header nav .links a:hover,
+body > header nav .links a.active {
   color: #ff6600;
 }
 
@@ -569,13 +568,76 @@ header nav .links a .radial.pending,
 }
 
 .post {
-  border-bottom: 1px solid hsl(207, 11%, 86%);
+  width: 650px;
+}
+
+.post h2 {
+  font-family: 'Roboto';
+  font-size: 54px;
+  line-height: 1.2em;
+  margin-bottom: .5em;
+  color: hsl(0, 0%, 9%);
 }
 
 .post h5 {
-  margin-top: -5px;
+  color: hsl(0, 0%, 72%);
+  margin-bottom: 1em;
 }
 
 .post-content {
-  margin-top: -10px;
+  line-height: 1.8em;
+  font-size: 18px;
+}
+
+.posts.sidebar {
+  float: right;
+  width: 260px;
+}
+
+body > footer {
+  color: #b7b7b7;
+
+}
+
+body > footer .footer-inner {
+  width: 960px;
+  margin: 20px auto 0 auto;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+}
+
+body > footer .left,
+body > footer .right {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+body > footer .right {
+  text-align: right;
+  line-height: 50px;
+}
+
+body > footer .right a {
+  margin-right: 10px;
+}
+
+body > footer .logo {
+  line-height: 50px;
+}
+
+body > footer .logo .entypo-bucket {
+  font-size: 28px;
+}
+
+body > footer .logo h1 {
+  display: inline-block;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+body > footer .logo h1 strong {
+  font-weight: 600;
 }

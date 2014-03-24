@@ -1,25 +1,49 @@
 ---
 layout: default
-title: Help
+title: News
 ---
 
 <div class="page">
-<div class="section">
-  <div class="page-inner">
-  	<h1 style="margin-bottom: 20px">News</h1>
-	  {% for post in site.posts %}
-	  	<div class="post">
-	    	<h2>{{ post.title }}</h2>
-	    	<h5>{{ post.date | date: "%-d %B %Y" }}</h5>
-	    	<div class="post-content">
-	    		{{ post.content }}
-	    	</div>
-    	</div>
-	  {% endfor %}
-    <div class="clear"></div>
+  <div class="section">
+    <div class="page-inner">
+      <nav class="posts sidebar">
+        <a class="twitter-timeline" href="https://twitter.com/search?q=BukGet" data-widget-id="277489356548227073">
+           Tweets about "BukGet"
+        </a>
+
+        <script>
+          !function(d,s,id){
+            var js,fjs=d.getElementsByTagName(s)[0];
+            if(!d.getElementById(id)){
+              js=d.createElement(s);
+              js.id=id;
+              js.src="//platform.twitter.com/widgets.js";
+              fjs.parentNode.insertBefore(js,fjs);
+            }
+          }(document,"script","twitter-wjs");
+        </script>
+      </nav>
+
+      {% for post in site.posts %}
+        <article class="post">
+          
+          <header>
+            <h5>{{ post.date | date: "%-d %B %Y" }}</h5>
+            <h2>{{ post.title }}</h2>
+          </header>
+
+          <div class="post-content">
+            {{ post.content }}
+          </div>
+
+        </article>
+      {% endfor %}
+
+      <div class="clear"></div>
+    </div>
   </div>
 </div>
-</div>
+
 <script type="text/javascript">
   Status.check();
 </script>

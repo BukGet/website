@@ -17,59 +17,41 @@
     <meta name="twitter:url" value="http://bukget.org">
     <meta name="twitter:title" value="{{ site.name }}">
     <meta name="twitter:description" value="Manage plugins with ease for minecraft servers running on bukkit.">
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//apis.google.com">
+    <link rel="dns-prefetch" href="//google-analytics.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//api.twitter.com">
+    <link rel="dns-prefetch" href="//connect.facebook.net">
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
     {% if page.title == "Documentation" %}
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200">
-        <link href="css/documentation.css" rel="stylesheet" type="text/css" />
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata">
+        <link href="css/documentation.css" rel="stylesheet" type="text/css" />
     {% endif %}
 
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
     <script src="js/globals.js"></script>
     <script src="js/status.js"></script>
-    <link rel="stylesheet" href="css/gh-fork-ribbon.css">
-
-    <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-      try {
-          var pageTracker = _gat._getTracker("UA-36855231-1");
-      pageTracker._trackPageview();
-      } catch(err) {}
-    </script>
   </head>
   <body>
-    <div class="github-fork-ribbon-wrapper left">
-      <div class="github-fork-ribbon">
-          <a href="https://github.com/BukGet">Source on GitHub</a>
-      </div>
-    </div>
     <header>
-      <div class="header-inner">
-        <nav>
-          <a href="/website" class="logo">
-            <span class="entypo-bucket"></span> 
-            <h1 class="text">buk<strong>get</strong></h1>
-          </a>
-          
-          <div class="links">
-            <a href="/website/documentation">Documentation</a>
-            <a href="/website/news">News</a>
-            <a href="/website/status"><span class="radial pending"></span> Status</a>
-            <a href="/website/help">Help</a>
-            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LM2UUUHWC54TA" class="donate">Donate <3</a>
-          </div>
-        </nav>
-      </div>
+      {% include header.html %}
     </header>
 
     {{ content }}
+
+    <footer>
+      {% include footer.html %}
+    </footer>
   </body>
 </html>
