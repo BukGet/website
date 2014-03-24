@@ -73,7 +73,7 @@ mixin RequestResponse(title, request)
                 | &nbsp;&nbsp;
                 code= request.name
         if content
-            a.pull-right(data-toggle="collapse", data-target="##{id}") Toggle
+            a.pull-right(data-toggle="collapse", data-target="##{id}") See Example
     if content
         li.list-group-item.collapse(id=id)
             if Object.keys(request.headers).length
