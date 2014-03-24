@@ -25,6 +25,19 @@ The best way to get that on our radar is to file an issue ticket with what you w
 
 The [API documentation](/documentation) and the API itself is fairly straightforward. All responses are returned in JSON format so as long as you can send a HTTP GET/POST and parse JSON coming back, you should be good.
 
+#### Q: Who are we?
+
+<strong>Steven McGrath</strong><br />
+Twitter: [@stevemcgrath](http://twitter.com/stevemcgrath)<br />
+Blog: [chigeek.com](http://chigeek.com)
+
+<strong>David Marby</strong><br />
+Twitter: [@DMarby](http://twitter.com/DMarby)<br />
+
+<strong>Nijiko Yonskai</strong><br />
+Twitter: [@Nijikokun](http://twitter.com/Nijikokun)<br />
+
+
 ### IRC Chat
 
 * Server: irc.esper.net
