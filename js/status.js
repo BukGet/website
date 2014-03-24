@@ -18,6 +18,7 @@ var Status = {
     "cpl": "Category Plugin List",
     "al": "Author List",
     "apl": "Author Plugin List",
+    "upd": "Updates",
     "se": "Search"
   }
 };
