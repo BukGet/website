@@ -23,6 +23,11 @@ The best way to get that on our radar is to file an issue ticket with what you w
 
 The [API documentation](/documentation) and the API itself is fairly straightforward. All responses are returned in JSON format so as long as you can send a HTTP GET/POST and parse JSON coming back, you should be good.
 
+You can also use one of the libraries that has been written for BukGet:
+
+[PyBukget (Python)](https://github.com/BukGet/pybukget)
+
+
 ## Who is <strong>Bukget?</strong>
 
 <div class="who">
