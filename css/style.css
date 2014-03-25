@@ -643,3 +643,53 @@ body > footer .logo h1 {
 body > footer .logo h1 strong {
   font-weight: 600;
 }
+
+.help h2 {
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.help h2 strong {
+  font-weight: 400;
+}
+
+.help .who {
+  float: left;
+  display: inline;
+  margin-left: 30px;
+  width: 30%;
+}
+
+.help .who .image {
+  -webkit-border-radius: 50em;
+  -moz-border-radius: 50em;
+  border-radius: 50em;
+  width: 200px; 
+  height: 200px;
+  border: 2px #000 solid;
+  margin-bottom: 25px;
+}
+
+.help .who a {
+  color: #ff6600;
+  float: right;
+  text-transform: none;
+}
+
+.help .who p {
+  padding-bottom: 7px;
+  font-weight: 600;
+  font-size: 12px;
+  width: 250px;
+  margin-left: -20px;
+  text-transform: uppercase;
+  border-bottom: 1px dotted #ccc;
+}
+
+.help .who .name {
+  margin-left: 40px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
