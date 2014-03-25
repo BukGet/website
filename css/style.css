@@ -693,3 +693,37 @@ body > footer .logo h1 strong {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
+
+.status #naughty {
+  width: 915px;
+  height: 100%;
+  margin-top: 10px !important;
+  display: none;
+  border: 2px solid #eee;
+  border-radius: 2px;
+  padding: 20px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.status #naughty table { border-collapse:collapse; margin-left: 20px; }
+
+
+.status #naughty .title {
+  margin-left: 300px;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.status #naughty table thead {
+  text-align: left;
+  border-bottom: 2px solid #eee;
+}
+
+.status #naughty .spacer {
+  height: 10px;
+  width: 100%;
+}

@@ -7,12 +7,12 @@ title: Status
     <div class="page-inner">
       <h1>
         <div class="right">
-          <a href="">Invalid Versioning List <span class="help-bubble"><span class="fa fa-question"></span></span></a>
+          <a class="show_hide" rel="#naughty" href="">Invalid Versioning List <span class="help-bubble"><span class="fa fa-question"></span></span></a>
         </div>
 
         Status
       </h1>
-      
+      <div id="naughty"><h1 class="title">Invalid Versioning List</h1><p style="margin-left: 20px;">The invalid version list is a list of plugins that have had to be switched over to using the BukkitDev versioning instead of the plugin.yml versioning. This happens when it is detected that there are 3 or more plugins with only 1 unique version between them (e.g. All of the plugin versions are considered v0.1 in the plugin.yml). This generally indicates that the plugin developer hasn’t been updating their plugin.yml to reflect new versions of their code and you should not trust the versioning indicated by the server for these plugins.</p></div>
       <div class="overall">
         <p>Systems are experiencing slight turbulance.</p>
       </div>
@@ -53,4 +53,5 @@ title: Status
 <script type="text/javascript">
   Status.checkAll();
   Status.drawGraphs();
+  Status.naughty_list();
 </script>
