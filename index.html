@@ -114,7 +114,7 @@ page: home
 </div>
 
 <div class="template" data-template="latest">
-<a href="#">
+<a href="#" target="_blank">
   <h4></h4>
   <span class="label"></span>
   <span class="slug"></span>
@@ -122,7 +122,7 @@ page: home
 </div>
 
 <div class="template" data-template="status">
-<a href="#">
+<a href="#" target="_blank">
   <h4></h4>
   <span class="installs"></span>
   <span class="slug"></span>
@@ -160,6 +160,7 @@ $.getJSON(latest, function (data) {
     var $template = $('[data-template="latest"] a').clone();
     var entry = data.changes[index];
 
+    $template.attr('href', 'http://dev.bukkit.org/server-mods/' + entry.plugin);
     $template.find('h4').text(entry.plugin);
     $template.find('.label').text(entry.version);
 
