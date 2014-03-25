@@ -89,9 +89,7 @@ var formatter = function() {
 
 Status.drawGraphs = function () {
   $.getJSON('http://api.bukget.org/stats/trend/30', function(data){
-    var dset = [{name: 'api1', data: []},
-      {name: 'api2', data: []},
-      {name: 'api3', data: []},
+    var dset = [{name: 'api3', data: []},
       {name: 'total', data: []}];
     var uadata = [{name: 'Other', data: []}];
     var uamax = 0;

@@ -830,13 +830,11 @@ Returns traffic info about the API.
             [
                 {
                     "bukkitdev": 0,
-                    "unique": 10792,
-                    "api1": 10748,
-                    "api2": 103526,
-                    "api3": 405927,
-                    "timestamp": 1395658808,
-                    "total": 584393,
-                    "user_agents": {
+                    "unique": 10792, // Unique IPs
+                    "api3": 405927, // Total requests for API 3
+                    "timestamp": 1395658808, // When these statistics were generated
+                    "total": 646741, // Total requests
+                    "user_agents": { // List of useragents with number of requests
                         "restler": 661,
                         "python-requests": 52,
                         "appengine-google;": 1,
@@ -853,8 +851,6 @@ Returns traffic info about the API.
                 {
                     "bukkitdev": 0,
                     "unique": 12230,
-                    "api1": 12142,
-                    "api2": 116384,
                     "api3": 442621,
                     "timestamp": 1395572409,
                     "total": 646741,
