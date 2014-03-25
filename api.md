@@ -3,14 +3,21 @@ HOST: http://api.bukget.org
 
 # BukGet API Documentation
 ## About
-BukGet is an API for getting data about bukkit plugins. The system parses [BukkitDev](http://dev.bukkit.org) every 6 hours and looks for new changes in the data to update. All of this is automatic and happens without any developer intervention. Furthermore if you notice any issues, we encourage you to open a ticket with us over at the [issue tracker](https://github.com/Bukget/api/issues). This is the only way we can know about parser errors or issues and make any needed corrections. Below is the schedule that BukGet uses for generating the data. Keep in mind that if you update a plugin, it can take just over 6 hours for your plugin to hit the index.
+BukGet is an API for getting data about bukkit plugins. The system parses [BukkitDev](http://dev.bukkit.org) every 6 hours and looks for new changes in the data to update. All of this is automatic and happens without any developer intervention. If you notice any issues, we encourage you to open a ticket with us over at the [issue tracker](https://github.com/Bukget/api/issues). This is the only way we can know about parser errors or issues and make any needed corrections. Below is the schedule that BukGet uses for generating the data. Keep in mind that if you update a plugin, it can take just over 6 hours for your plugin to hit the index.
+
+|Type                   |Times (CST)                            |
+|----------------------:|:--------------------------------------|
+|__Normal/Speedy:__     | Every 6 hours (0000, 0600, 1200, 1800)|
+|__Status Update:__     | Weekly (0000 Saturday)                |
+|__Full Generation:__   | As Needed                             |
+|__Ad-Hoc Updates:__    | As Needed/Ticket Request              |
 
 ## Recommended usage guidelines
 We recommend that when communicating to the API, that you use a custom User-Agent string (UA String) to identify your application. We are tracking these UA strings and are using these to determine what applications are utilizing the API. If you have any questions about User Agent strings, please contact us in the IRC channel.
 
 ## Exposed internal flags
 
-The following items may be exposed via the API, however are used internally by the parser and/or the APIs and are not intended for general use.
+The following items may be exposed via the API, however these are used internally by the parser and/or the APIs and are not intended for general use.
 
 + _use_dbo: This is an internal flag that is set on a plugin to denote that the plugin parser will use the version parsed from the DBO page over the plugin.yml version. This is pragmatically set when 3 or more plugin versions exist when there is only one unique plugin version pulled from the plugin.yml.
 
@@ -142,7 +149,7 @@ http://api.bukget.org/3/geninfo/53306637a8f070843817cdfb
 # Group Plugins
 
 ## Plugin Listing [/3/plugins/{server}{?size,start,fields,sort}]
-The plugin listing is simply a list of plugins in the API. The information can be represented however the user wishes by modifying the query attributes and pagination directly from the API is also supported. Optionally the information can further be narrowed down based on the server platform the plugins are written for (e.g. bukkit).
+The plugin listing is simply a list of plugins in the API. The information can be represented however the user wishes by modifying the query attributes and pagination directly from the API. Optionally the information can further be narrowed down based on the server platform the plugins are written for (e.g. bukkit).
 
 + Parameters
 
