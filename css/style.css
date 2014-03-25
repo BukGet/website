@@ -672,6 +672,10 @@ body > footer .logo h1 strong {
   margin-bottom: 25px;
 }
 
+.help .who .image:hover {
+   border: 2px #ff6600 solid;
+}
+
 .help .who a {
   color: #ff6600;
   float: right;

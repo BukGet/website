@@ -38,7 +38,7 @@ You can also use one of the libraries that has been written for BukGet:
 </div>
 
 <div class="who">
-	<div class="image" style="background: url(http://gravatar.com/avatar/978e056720f0b8abf450eac3898b11af?s=200) no-repeat center center; border: 2px #ff6600 solid;"></div>
+	<div class="image" style="background: url(http://gravatar.com/avatar/978e056720f0b8abf450eac3898b11af?s=200) no-repeat center center;"></div>
 	<strong class="name">David Marby</strong>
 	<p>Twitter<a href="http://twitter.com/DMarby">@DMarby</a></p>
 </div>
