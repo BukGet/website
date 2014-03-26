@@ -40,7 +40,9 @@ mixin Parameters(params)
                     - var param = params[name]
                     dd
                         if param.required
-                            span.required (required)
+                            dt
+                                != name
+                                span required
                         else
                             dt
                                 != name

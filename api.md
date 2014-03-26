@@ -710,7 +710,7 @@ Filters examples:
 
 + Parameters
 
-    + filters (required, String, ``) ... JSON encoded, refer to the example format for the filters field above.
+    + filters (Required, String, ``) ... JSON encoded, refer to the example format for the filters field above.
     + size (optional, Integer, `10`) ... How many documents do you want to return.
     + start (optional, Integer, `5`) ... From where the query should start.
     + sort (optional, String, `plugin_name`) ... Which field to sort by. Use a - before the field name to perform an inverted sort.
