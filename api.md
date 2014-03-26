@@ -1,9 +1,10 @@
 §FORMAT: 1A
-HOST: http://api.bukget.org
+HOST: https://api.bukget.org
 
 # BukGet API Documentation
 ## About
 BukGet is an API for getting data about bukkit plugins. The system parses [BukkitDev](http://dev.bukkit.org) every 6 hours and looks for new changes in the data to update. All of this is automatic and happens without any developer intervention. If you notice any issues, we encourage you to open a ticket with us over at the [issue tracker](https://github.com/Bukget/api/issues). This is the only way we can know about parser errors or issues and make any needed corrections. Below is the schedule that BukGet uses for generating the data. Keep in mind that if you update a plugin, it can take just over 6 hours for your plugin to hit the index.
+The API is served over both HTTP and HTTPS.
 
 |Type                   |Times (CST)                            |
 |----------------------:|:--------------------------------------|
