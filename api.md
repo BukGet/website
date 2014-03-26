@@ -697,7 +697,7 @@ Filters examples:
     }
 ]
 ```
-NOT` example:
+`NOT` example:
 ```
 {
     "field": "curse_id",
