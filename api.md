@@ -621,7 +621,7 @@ Valid actions:
 * _less-equal:_ Field is less than or equal to value.
 * _more:_ Field is greater than value.
 * _more-equal:_ Field is greater than or equal to value.
-* _like:_ Field is like (partial match) to value.
+* _like:_ Field is like (partial match) to value. You can also use it as a case-insensitive equals, by using ^SearchWord$ as the value.
 * _in:_ Field is in the list of of values provided.
 * _not in:_ Field is not in the list of values provided.
 * _all:_ Field contains all of the values in the list provided.
