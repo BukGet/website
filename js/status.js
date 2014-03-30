@@ -224,7 +224,8 @@ Status.drawGraphs = function () {
             text: null
         },
         min: 0,
-        max: (uamax + uamax * 0.1)
+        //max: (uamax + uamax * 0.1)
+        max: 50000
       },
       series: uadata,
       credits: {
