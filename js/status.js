@@ -37,7 +37,7 @@ Status.check = function () {
       return;
     }
     
-    $('.links .radial').removeClass('pending').addClass(data.message);
+    $('.links .radial').removeClass('pending').addClass(data.status);
   });
 };
 
@@ -67,7 +67,7 @@ Status.checkAll = function () {
           $template.attr('title', code);
           $blocks.append($template);
 
-          $overall.empty().removeClass('pending').addClass(status).html('<p>' + Status.messages[data.status] + '</p>');
+          $overall.empty().removeClass('pending').addClass(data.status).html('<p>' + Status.messages[data.status] + '</p>');
         }
       }
     }
