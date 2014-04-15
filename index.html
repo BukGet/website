@@ -161,7 +161,7 @@ $.getJSON(latest, function (data) {
     var $template = $('[data-template="latest"] a').clone();
     var entry = data.changes[index];
 
-    $template.attr('href', 'http://dev.bukkit.org/server-mods/' + entry.plugin);
+    $template.attr('href', 'http://dev.bukkit.org/bukkit-plugins/' + entry.plugin);
     $template.find('h4').text(entry.plugin);
     $template.find('.label').text(entry.version);
 

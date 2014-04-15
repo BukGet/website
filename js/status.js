@@ -239,9 +239,9 @@ Status.drawGraphs = function () {
 Status.naughty_list = function (){
     $('#naughty').append('<table><thead>' +
                          '<tr><th style="width: 400px;">Plugin Name</th><th style="width: 100px">Authors</th><th style="width: 100px">Version</th><th>Last Updated</th></tr><tr style="height: 5px"><td></td><td></td><td></td><td></td></tr></thead><tbody><tr class="spacer"><td></td><td></td><td></td><td></td></tr>');
-    $.getJSON('http://api.bukget.org/3/search/_use_dbo/exists/true?fields=plugin_name,slug,versions.date,authors&sort=-versions.date', function(data){
+    $.getJSON('http://api.bukget.org/3/search/_use_dbo/exists/true?fields=dbo_page,plugin_name,slug,versions.date,authors&sort=-versions.date', function(data){
         $.each(data, function(key, plugin){
-            $("#naughty tbody").append('<tr><td><strong>' + plugin.plugin_name + '</strong> (' + plugin.slug + ')</td>' +
+            $("#naughty tbody").append('<tr><td><strong><a href="' + plugin.dbo_page + '">' + plugin.plugin_name + '</a></strong> (' + plugin.slug + ')</td>' +
                                  '<td>' + plugin.authors.join(', ') + '</td>' +
                                  '<td>' + plugin.versions.length + '</td>' +
                                  '<td>' + Highcharts.dateFormat('%a, %b %e, %H:%M, %Y', plugin.versions[0].date * 1000) + '</td></tr>'
