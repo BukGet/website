@@ -186,7 +186,7 @@ Status.drawGraphs = function () {
     $('#useragents').highcharts({
       chart: {
         type: 'line',
-        zoomType: 'x',
+        zoomType: 'y',
         spacingRight: 20
       },
       plotOptions: {
@@ -225,7 +225,7 @@ Status.drawGraphs = function () {
         },
         min: 0,
         //max: (uamax + uamax * 0.1)
-        max: 50000
+        //max: 50000
       },
       series: uadata,
       credits: {
