@@ -51,4 +51,4 @@ You can also use one of the libraries that has been written for BukGet:
 <div class="clear"></div>
 
 ## Chat with us! <strong>IRC.ESPER.NET/#BUKGET</strong>
-<iframe src="https://kiwiirc.com/client/irc.esper.net/?nick=kiwi_|?#bukget" style="border:0; width:100%; height:450px;"></iframe>
+<iframe src="https://kiwiirc.com/client/irc.esper.net/?nick=kiwi_?#bukget" style="border:0; width:100%; height:450px;"></iframe>
