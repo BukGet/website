@@ -628,6 +628,7 @@ Valid actions:
 * _exists:_ Field exists.
 * _and:_ All values in list provided are matching. See example below.
 * _or:_ Some values in the list of objects provided are matching. See example below.
+* _likeor:_ Some values in the list of objects provided are partially matching. See OR example below.
 * _nor:_ No values in the list of objects provided are matching. See example below.
 * _not:_ Performs a logical NOT operation on the specified expressions. See example below.
 
