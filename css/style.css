@@ -585,6 +585,10 @@ header nav .links a .radial.pending,
   color: hsl(0, 0%, 9%);
 }
 
+.post h2 a:hover {
+  color: #ff6600;
+}
+
 .post h5 {
   color: hsl(0, 0%, 72%);
   margin-bottom: 1em;
