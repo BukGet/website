@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: API1 and API2 Officially Deprecated and Going Off-line
 ---
 

@@ -1,0 +1,46 @@
+{% include header.html %}
+
+    <div class="page">
+      <div class="section">
+        <div class="page-inner">
+          <nav class="posts sidebar">
+            <a class="twitter-timeline" href="https://twitter.com/search?q=BukGet" data-widget-id="277489356548227073">
+               Tweets about "BukGet"
+            </a>
+
+            <script>
+              !function(d,s,id){
+                var js,fjs=d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)){
+                  js=d.createElement(s);
+                  js.id=id;
+                  js.src="//platform.twitter.com/widgets.js";
+                  fjs.parentNode.insertBefore(js,fjs);
+                }
+              }(document,"script","twitter-wjs");
+            </script>
+          </nav>
+
+            <article class="post">
+              
+              <header>
+                <h5>{{ page.date | date: "%-d %B %Y" }}</h5>
+                <h2 class="news"><a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a></h2>
+              </header>
+
+              <div class="post-content">
+                {{ content }}
+              </div>
+
+            </article>
+
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      Status.check();
+    </script>
+
+{% include footer.html %}

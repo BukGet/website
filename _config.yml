@@ -1,3 +1,5 @@
 name: Bukget
 markdown: kramdown
 pygments: true
+url: http://bukget.org
+permalink:   /news/:title/
