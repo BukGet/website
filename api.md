@@ -500,13 +500,16 @@ http://api.bukget.org/3/authors/bukkit/iAlexak?size=1
     [Author Plugin Listing][]
 
 # Group Update
-## Updates [/3/updates/{?slugs,hashes, filenames}]
+## Updates [/3/updates/{?slugs,hashes,filenames,extra_fields, extra_version_fields}]
 Outputs the latest, latest release, beta, alpha, versions for each plugin found.
+Returns hash and current version if the hashes parameter is used.
 
 + Parameters
     + slugs (optional, String, `worldedit,dynmap`) ... Which slug(s) to search for.
     + hashes (optional, String, `49ab15446ae1bfce8801433cd75f8fc9`) ... Which file md5(s) to search for.
     + filenames (optional, String, `dynmap-1.9.3.jar`) ... Which filename(s) to search for.
+    + extra_fields (optional, String, `website,main`) ... Which extra fields the request should return.
+    + extra_version_fields (optional, String, `status,commands`) ... Which extra fields the request should return for each version.
 
 + Model
 
@@ -515,7 +518,6 @@ Outputs the latest, latest release, beta, alpha, versions for each plugin found.
             Content-Type: application/json
 
     + Body
-
             [
                 {
                     "slug": "abitofrealism", // Plugin slug
@@ -531,12 +533,18 @@ Outputs the latest, latest release, beta, alpha, versions for each plugin found.
                             "download": "http://dev.bukkit.org/media/files/599/604/AbitOfRealism.jar",
                             "md5": "236c18df1d15e149fe91675c08efa8b5"
                         },
+                        "current": { // Only returned if "hashes" parameter is used
+                            "version": "0.3.1",
+                            "download": "http://dev.bukkit.org/media/files/599/604/AbitOfRealism.jar",
+                            "md5": "236c18df1d15e149fe91675c08efa8b5"
+                        },
                         "alpha": {
                             "version": "0.1",
                             "download": "http://dev.bukkit.org/media/files/596/293/AbitOfRealism.jar",
                             "md5": "2458133b2813b66e2c162ce7bbdf5c18"
                         }
                     }
+                    "hash": "236c18df1d15e149fe91675c08efa8b5" // Only returned if "hashes" parameter is used
                 }
             ]
 

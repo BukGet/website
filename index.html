@@ -159,6 +159,10 @@ $.getJSON(latest, function (data) {
   data = data[0];
   $div.empty();
 
+  if (data.changes.length > 10) {
+    data.changes.length = 10;
+  }
+
   for (var index in data.changes) {
     var $template = $('[data-template="latest"] a').clone();
     var entry = data.changes[index];
