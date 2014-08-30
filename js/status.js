@@ -1,6 +1,6 @@
 var Status = {
   messages: {
-    warning: 'Systems are experiencing slight turbulance.',
+    warning: 'Systems are experiencing slight turbulence.',
     down: 'Majority of the system is down.',
     ok: 'All systems are GO.',
     pending: 'DDOSing the system, please hold.'
@@ -36,8 +36,36 @@ Status.check = function () {
     if (error) {
       return;
     }
+
+    var downCount = 0;
+    var down = {};
+    for (var server in data.servers) {
+      down[server] = 0;
+      var the_server = data.servers[server];
+      for (var version in the_server) {
+        var the_version = the_server[version];
+        for (var section in the_server[version]) {
+          if (the_version[section] != "ok") {
+            down[server]++;
+          }
+        }
+      }
+    }
+
+    for (var i in down) {
+      if (down[i] > 3) {
+        downCount++;
+      }
+    }
     
-    $('.links .radial').removeClass('pending').addClass(data.status);
+    var statusClass = "ok";
+    if (downCount > 2) {
+      statusClass = "down";
+    } else if (downCount > 0) {
+      statusClass = "warning";
+    }
+
+    $('.links .radial').removeClass('pending').addClass(statusClass);
   });
 };
 
@@ -48,29 +76,43 @@ Status.checkAll = function () {
     if (error) {
       return;
     }
-    
-    $('.links .radial').removeClass('pending').addClass(data.status);
-
+  
+    var down = {};
     for (var server in data.servers) {
+      down[server] = 0;
       var the_server = data.servers[server];
-      for (var version in data.servers[server]) {
+      for (var version in the_server) {
         var the_version = the_server[version];
         var $blocks = $('.system.' + server.split('.')[0] + '.' + version + ' .blocks');
         var length = Object.keys(the_version).length;
         $blocks.empty();
         for (var section in the_version) {
+          if (the_version[section] != "ok") {
+            down[server]++;
+          }
           var code = Status.codes[section];
           var $template = $('[data-template="block"] span').clone();
 
-          //$template.addClass('pending');
           $template.addClass(the_version[section]);
           $template.attr('title', code);
           $blocks.append($template);
-
-          $overall.empty().removeClass('pending').addClass(data.status).html('<p>' + Status.messages[data.status] + '</p>');
         }
       }
     }
+    var downCount = 0;
+    var overallClass = "ok";
+    for (var i in down) {
+      if (down[i] > 3) {
+        downCount++;
+      }
+    }
+    if (downCount > 2) {
+      overallClass = "down";
+    } else if (downCount > 0) {
+      overallClass = "warning";
+    }
+    $overall.empty().removeClass('pending').addClass(overallClass).html('<p>' + Status.messages[overallClass] + '</p>');
+    $('.links .radial').removeClass('pending').addClass(overallClass);
   }); 
 };
 
