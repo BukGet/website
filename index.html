@@ -133,12 +133,12 @@ page: home
 </div>
 
 <script>
-var latest = 'http://api.bukget.org/3?callback=?';
-var popular = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.total&fields=plugin_name,slug,popularity,dbo_page&callback=?';
-var trending = 'http://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity,dbo_page&callback=?';
-var stats = 'http://api.bukget.org/stats/todays_trends?callback=?';
-var trend = 'http://api.bukget.org/stats/trend/1?callback=?';
-var try_it_out = 'http://api.bukget.org/3/plugins?size=10';
+var latest = 'https://api.bukget.org/3?callback=?';
+var popular = 'https://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.total&fields=plugin_name,slug,popularity,dbo_page&callback=?';
+var trending = 'https://api.bukget.org/3/plugins/bukkit?size=10&start=0&sort=-popularity.daily&fields=plugin_name,slug,popularity,dbo_page&callback=?';
+var stats = 'https://api.bukget.org/stats/todays_trends?callback=?';
+var trend = 'https://api.bukget.org/stats/trend/1?callback=?';
+var try_it_out = 'https://api.bukget.org/3/plugins?size=10';
 
 function format (number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
