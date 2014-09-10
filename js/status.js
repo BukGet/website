@@ -130,7 +130,7 @@ var formatter = function() {
 }
 
 Status.drawGraphs = function () {
-  $.getJSON('http://api.bukget.org/stats/trend/30', function(data){
+  $.getJSON('https://api.bukget.org/stats/trend/30', function(data){
     var dset = [{name: 'api3', data: []},
       {name: 'total', data: []}];
     var uadata = [{name: 'Other', data: []}];
@@ -281,7 +281,7 @@ Status.drawGraphs = function () {
 Status.naughty_list = function (){
     $('#naughty').append('<table><thead>' +
                          '<tr><th style="width: 400px;">Plugin Name</th><th style="width: 100px">Authors</th><th style="width: 100px">Version</th><th>Last Updated</th></tr><tr style="height: 5px"><td></td><td></td><td></td><td></td></tr></thead><tbody><tr class="spacer"><td></td><td></td><td></td><td></td></tr>');
-    $.getJSON('http://api.bukget.org/3/search/_use_dbo/exists/true?fields=dbo_page,plugin_name,slug,versions.date,authors&sort=-versions.date', function(data){
+    $.getJSON('https://api.bukget.org/3/search/_use_dbo/exists/true?fields=dbo_page,plugin_name,slug,versions.date,authors&sort=-versions.date', function(data){
         $.each(data, function(key, plugin){
             $("#naughty tbody").append('<tr><td><strong><a href="' + plugin.dbo_page + '">' + plugin.plugin_name + '</a></strong> (' + plugin.slug + ')</td>' +
                                  '<td>' + plugin.authors.join(', ') + '</td>' +
