@@ -636,6 +636,14 @@ body > footer .logo .icon-bucket {
   font-size: 28px;
 }
 
+body > footer .icon-traffic-cone {
+  display: inline !important;
+}
+
+body > footer .icon-github {
+  display: inline !important;
+}
+
 body > footer .logo h1 {
   display: inline-block;
   font-size: 36px;
