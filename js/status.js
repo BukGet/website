@@ -25,7 +25,7 @@ var Status = {
 
 Status.call = function (callback) {
   $.ajax({
-    url: 'http://monitor.bukget.org',
+    url: 'https://monitor.bukget.org',
     success: function (data) { callback(data); },
     error: function (xml, status, error) { callback(null, error); }
   });
