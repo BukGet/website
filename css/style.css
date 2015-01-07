@@ -1,5 +1,5 @@
 @import url(//cdn.jsdelivr.net/font-entypo/0.1/dev/entypo.css);
-@import url(//fonts.googleapis.com/css?family=Exo:300,400,500,600,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Signika:400,300,600,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 @import url(//fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,300italic,400italic,300,100,100italic);
 
 body, html {
@@ -102,7 +102,7 @@ body > header nav .links a {
   margin-left: 20px;
   color: #777;
   font-size: 12px;
-  font-family: 'Lato';
+  font-family: 'Open Sans';
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0px;
