@@ -628,6 +628,10 @@ body > footer .right a {
   margin-right: 10px;
 }
 
+body > footer .right .text {
+  font-family: 'Open Sans';
+}
+
 body > footer .logo {
   line-height: 50px;
 }
