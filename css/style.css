@@ -223,12 +223,16 @@ body > header nav .links a.active {
   background: hsl(24, 100%, 50%);
 }
 
-.stats .page-inner > h1, p, a {
+.stats .page-inner > h1 {
   color: white;
 }
 
-.stats .page-inner > p a:hover,
-.stats .page-inner > p a.active {
+.stats > h1, p, a {
+  color: white;
+}
+
+.stats a:hover,
+.stats a.active {
   color: #000 !important;
 }
 
