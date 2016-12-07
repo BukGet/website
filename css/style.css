@@ -227,7 +227,9 @@ body > header nav .links a.active {
   color: white;
 }
 
-.stats > h1, p, a {
+.stats h1,
+.stats p,
+.stats a {
   color: white;
 }
 
