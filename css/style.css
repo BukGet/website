@@ -223,8 +223,13 @@ body > header nav .links a.active {
   background: hsl(24, 100%, 50%);
 }
 
-.stats .page-inner > h1 {
+.stats .page-inner > h1, p, a {
   color: white;
+}
+
+.stats .page-inner > p a:hover,
+.stats .page-inner > p a.active {
+  color: #000 !important;
 }
 
 .stat {
@@ -423,25 +428,25 @@ header nav .links a .radial.pending,
 }
 
 .section.hero .graphic .line.one {
-  width: 2px; height: 64px; position: absolute; 
-  background: hsl(0, 0%, 75%); 
-  -webkit-transform: rotate(-282deg); 
-  -moz-transform: rotate(-282deg); 
-  -ms-transform: rotate(-282deg); 
-  -o-transform: rotate(-282deg); 
-  top: 77px; 
+  width: 2px; height: 64px; position: absolute;
+  background: hsl(0, 0%, 75%);
+  -webkit-transform: rotate(-282deg);
+  -moz-transform: rotate(-282deg);
+  -ms-transform: rotate(-282deg);
+  -o-transform: rotate(-282deg);
+  top: 77px;
   left: -140px;
 }
 
 .section.hero .graphic .line.two {
-  width: 2px; 
-  height: 64px; position: absolute; 
-  background: hsl(0, 0%, 68%); 
+  width: 2px;
+  height: 64px; position: absolute;
+  background: hsl(0, 0%, 68%);
   -webkit-transform: rotate(-390deg);
   -moz-transform: rotate(-390deg);
   -ms-transform: rotate(-390deg);
-  -o-transform: rotate(-390deg); 
-  top: 118px; 
+  -o-transform: rotate(-390deg);
+  top: 118px;
   left: -41px;
 }
 
@@ -453,7 +458,7 @@ header nav .links a .radial.pending,
   -webkit-transform: rotate(-318deg);
   -moz-transform: rotate(-318deg);
   -ms-transform: rotate(-318deg);
-  -o-transform: rotate(-318deg)); 
+  -o-transform: rotate(-318deg));
   top: 0px;
   left: -28px;
 }
@@ -486,10 +491,10 @@ header nav .links a .radial.pending,
 }
 
 .features .browser {
-  width: 600px; 
+  width: 600px;
   margin: 30px auto 0px;
-  border: 1px solid hsl(207, 11%, 86%); 
-  border-radius: 3px; 
+  border: 1px solid hsl(207, 11%, 86%);
+  border-radius: 3px;
   box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.1);
 }
 
@@ -551,7 +556,7 @@ header nav .links a .radial.pending,
 .features .browser .browser-page .start-page .browser-box:hover {
   box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.1);
 }
-  
+
 .leaderboard {
   padding-top: 40px;
 }
@@ -682,7 +687,7 @@ body > footer .logo h1 strong {
   -webkit-border-radius: 50em;
   -moz-border-radius: 50em;
   border-radius: 50em;
-  width: 200px; 
+  width: 200px;
   height: 200px;
   border: 2px #000 solid;
   margin-bottom: 25px;
